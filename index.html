@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REEF OXP Booking System — Staff Guide</title>
+<title>REEF Booking System — Staff Guide</title>
 <style>
   :root{
     --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
@@ -71,6 +71,18 @@
   .navlink.active{background:var(--teal-light); border-left-color:var(--teal);}
   .navlink.active .n{background:var(--teal); color:#fff;}
 
+  .program-heading{
+    font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--navy-dark); padding:16px 18px 4px; border-top:1px solid var(--line); margin-top:8px;
+  }
+  .program-heading:first-child{border-top:none; margin-top:0; padding-top:14px;}
+  .program-heading-next{margin-top:10px;}
+
+  .navlink-disabled{cursor:default; opacity:.55;}
+  .navlink-disabled:hover{background:transparent;}
+  .navlink-disabled .n{background:#eef2f3; color:var(--muted);}
+  .navlink-disabled .sub{font-style:italic;}
+
   .content{flex:1; min-width:0; position:relative; background:var(--bg);}
   .content iframe{width:100%; height:100%; border:0; display:block; background:#fff;}
   .loading{
@@ -99,8 +111,8 @@
   <div class="brand">
     <div class="brand-mark">R</div>
     <div class="brand-text">
-      <div class="t1">REEF Ocean Explorers Booking System</div>
-      <div class="t2">Staff Pilot Launch — Guide &amp; Reference</div>
+      <div class="t1">REEF Booking System</div>
+      <div class="t2">Staff Guide — Ocean Explorers (OXP) + Facility Rentals</div>
     </div>
   </div>
   <div class="topbar-spacer"></div>
@@ -110,6 +122,7 @@
 <div class="shell">
   <div class="overlay" id="overlay"></div>
   <nav class="sidebar" id="sidebar">
+    <div class="program-heading">Ocean Explorers (OXP)</div>
     <div class="group-label">Getting Started</div>
     <a class="navlink" data-key="quick-guide" href="#quick-guide">
       <span class="n">1</span><span class="lbl"><span class="main">Quick Guide</span><span class="sub">The flow, start to finish</span></span>
@@ -139,6 +152,11 @@
     <a class="navlink" data-key="first-booking" href="#first-booking">
       <span class="n">8</span><span class="lbl"><span class="main">First Real Booking Checklist</span><span class="sub">Taking the pilot live</span></span>
     </a>
+
+    <div class="program-heading program-heading-next">Facility Rentals</div>
+    <div class="navlink navlink-disabled">
+      <span class="n">–</span><span class="lbl"><span class="main">Guide coming soon</span><span class="sub">Not yet built — OXP guide shipped first</span></span>
+    </div>
   </nav>
 
   <div class="content">
@@ -162,7 +180,7 @@
 
   var frame = document.getElementById('frame');
   var loading = document.getElementById('loading');
-  var links = document.querySelectorAll('.navlink');
+  var links = document.querySelectorAll('.navlink:not(.navlink-disabled)');
   var sidebar = document.getElementById('sidebar');
   var overlay = document.getElementById('overlay');
   var menuBtn = document.getElementById('menuBtn');
