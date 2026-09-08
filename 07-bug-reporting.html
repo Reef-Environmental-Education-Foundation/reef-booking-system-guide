@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REEF OXP Bug-Reporting Process</title>
+<style>
+  :root{
+    --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
+    --ink:#1c2b33; --muted:#5b6b73; --line:#dfe7ea; --bg:#fbfcfc; --card:#ffffff;
+    --blocker:#a33; --blocker-bg:#fbeaea; --annoying:#b25a00; --annoying-bg:#fdf0e0; --later:#6b6f76; --later-bg:#eceef0;
+    --gate:#6a3fa0; --gate-bg:#f1e9fb;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;padding:26px 32px;}
+  header .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bcd7e6;font-weight:600;}
+  header h1{margin:6px 0 4px;font-size:23px;}
+  header p{margin:0;color:#dcebf2;font-size:13.5px;}
+  header .updated{font-size:11.5px;color:#9fb9c8;margin-top:2px;}
+  main{max-width:900px;margin:0 auto;padding:24px;}
+  h2{font-size:17px;color:var(--navy);border-bottom:2px solid var(--teal-light);padding-bottom:6px;margin-top:34px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin-bottom:12px;}
+  .card p{margin:4px 0;font-size:13.8px;}
+  .template{background:#f2f6f7;border:1px dashed #b9cdd4;border-radius:8px;padding:14px 18px;font-size:13.5px;font-family:ui-monospace,Menlo,Consolas,monospace;}
+  .template div{margin-bottom:6px;}
+  .urg{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
+  .urgcard{flex:1;min-width:180px;border-radius:8px;padding:12px 14px;font-size:13.3px;}
+  .u-blocker{background:var(--blocker-bg);border:1px solid #eec9c9;}
+  .u-blocker strong{color:#7a2323;}
+  .u-annoying{background:var(--annoying-bg);border:1px solid #f0d9b8;}
+  .u-annoying strong{color:#7a4a00;}
+  .u-later{background:var(--later-bg);border:1px solid #d8dbde;}
+  .u-later strong{color:#454952;}
+  .gatebox{background:var(--gate-bg);border:1px solid #d9c7ef;border-left:4px solid var(--gate);border-radius:8px;padding:14px 18px;margin-top:14px;}
+  .gatebox strong{color:#4a2a75;}
+  .footnote{font-size:12.5px;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">REEF Ocean Explorers Booking Workflow — Staff Pilot Handoff</div>
+  <h1>Bug-Reporting Process</h1>
+  <p>How to report bugs or confusing moments during the pilot, and how they get triaged</p>
+  <p class="updated">2026-09-08</p>
+</header>
+<main>
+
+<h2>Where to Log It</h2>
+<div class="card">
+  <p>Every bug or confusing moment gets its own task in the <strong>Bugs and Confusing Moments</strong> section of the <strong>"REEF OXP Booking System Pilot Launch"</strong> Asana project. Use the template below in the task description — don't skip fields even if the answer is "not sure."</p>
+</div>
+
+<div class="template">
+  <div><strong>Staff logs issue:</strong> [your name, date, which booking/record if applicable]</div>
+  <div><strong>Expected behavior:</strong> [what you thought would happen]</div>
+  <div><strong>Actual behavior:</strong> [what actually happened]</div>
+  <div><strong>Screenshot / link:</strong> [attach or paste a link — Airtable record, Asana task, page URL]</div>
+  <div><strong>Urgency:</strong> blocker / annoying / later</div>
+</div>
+
+<h2>Urgency Levels</h2>
+<div class="urg">
+  <div class="urgcard u-blocker"><strong>Blocker</strong><br>Stops real work, or risks something reaching a real customer wrong. Flag immediately, don't just leave it in the backlog.</div>
+  <div class="urgcard u-annoying"><strong>Annoying</strong><br>Workable around, but should get fixed. Logged normally, triaged in order.</div>
+  <div class="urgcard u-later"><strong>Later</strong><br>Real, but low-stakes or cosmetic. Goes to Later / Parking Lot.</div>
+</div>
+
+<div class="gatebox">
+  <strong>Special category — a stuck or missing review task.</strong> If you generated a proposal/contract package and no Asana review task appeared for Rose, or an existing review task seems stuck, duplicated, or pointed at the wrong booking — log this as its own bug, urgency <strong>blocker</strong>, every time. This isn't a generic bug: the review task is the only thing standing between a bad proposal and a real customer, so a broken gate is more urgent than a broken button.
+</div>
+
+<h2>Escalation</h2>
+<div class="card">
+  <ul>
+    <li><strong>Blocker</strong> (including any stuck/missing review task): log the Asana task, then also message Martha and Rose directly the same day — don't wait for someone to see it in the backlog.</li>
+    <li><strong>Annoying:</strong> log it in Asana; it'll get triaged and picked up in the Build Fixes section.</li>
+    <li><strong>Later:</strong> log it in Asana; it moves to Later / Parking Lot and isn't pilot-blocking.</li>
+  </ul>
+</div>
+
+<div class="footnote">
+  If you're not sure whether something is a bug or expected behavior (a lot is intentionally manual right now — see the Manual Fallback Guide), log it anyway and flag it as "not sure if bug" — that's useful information either way.
+</div>
+
+</main>
+</body>
+</html>

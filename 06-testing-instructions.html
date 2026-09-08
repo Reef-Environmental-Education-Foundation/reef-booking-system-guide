@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REEF OXP Staff Testing Instructions</title>
+<style>
+  :root{
+    --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
+    --ink:#1c2b33; --muted:#5b6b73; --line:#dfe7ea; --bg:#fbfcfc; --card:#ffffff;
+    --live:#1a7a3c; --live-bg:#e7f6ec; --warn:#a33; --warn-bg:#fbeaea;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;padding:26px 32px;}
+  header .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bcd7e6;font-weight:600;}
+  header h1{margin:6px 0 4px;font-size:23px;}
+  header p{margin:0;color:#dcebf2;font-size:13.5px;}
+  header .updated{font-size:11.5px;color:#9fb9c8;margin-top:2px;}
+  main{max-width:900px;margin:0 auto;padding:24px;}
+  h2{font-size:17px;color:var(--navy);border-bottom:2px solid var(--teal-light);padding-bottom:6px;margin-top:34px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin-bottom:12px;}
+  .card p{margin:4px 0;font-size:13.8px;}
+  .card code{background:#eef2f3;padding:1px 5px;border-radius:4px;font-size:12.8px;}
+  ol,ul{font-size:13.8px;padding-left:22px;}
+  li{margin-bottom:6px;}
+  .warnbox{background:var(--warn-bg);border:1px solid #eec9c9;border-left:4px solid var(--warn);border-radius:8px;padding:14px 18px;margin-top:14px;}
+  .warnbox strong{color:#7a2323;}
+  .okbox{background:var(--live-bg);border:1px solid #c7e6ce;border-left:4px solid var(--live);border-radius:8px;padding:14px 18px;margin-top:14px;}
+  .okbox strong{color:#155a2c;}
+  .link{color:#1f5fa8;word-break:break-all;font-size:13.3px;}
+  .footnote{font-size:12.5px;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">REEF Ocean Explorers Booking Workflow — Staff Pilot Handoff</div>
+  <h1>Staff Testing Instructions</h1>
+  <p>How to test safely during pilot week, without touching real bookings or real customers</p>
+  <p class="updated">2026-09-08</p>
+</header>
+<main>
+
+<h2>Where to Test</h2>
+<div class="card">
+  <p>There is no separate sandbox base. Test directly in the real <strong>REEF Bookings | PILOT</strong> base, using the new <strong>"ZZZ STAFF TEST (Sandbox)"</strong> view on the Bookings table — a filtered view showing only records whose Booking Name contains <code>ZZZ STAFF TEST</code>.</p>
+  <p><a class="link" href="https://airtable.com/app3FIECuG8iQr7kY/tbl9Jb9UVSYLQ1Puc/viwKZ0whopwmvouH3" target="_blank">→ Open the ZZZ STAFF TEST (Sandbox) view</a></p>
+  <p>This is deliberate, not a shortcut: a separate duplicated base would be disconnected from the live Zaps, the review gate, and EPO, so anything you found there wouldn't tell you how the real system behaves, and a bug you hit there might not even reproduce in the real base. Testing in the real base, clearly labeled, is what actually exercises the live automations.</p>
+</div>
+
+<h2>How to Create a Safe Test Record</h2>
+<div class="card">
+  <ol>
+    <li>Name it starting with <strong><code>ZZZ STAFF TEST</code></strong> — exactly that text, case-sensitive — in the Booking Name field (e.g. <code>ZZZ STAFF TEST — Jane Smith — pilot week</code>). This is what makes it show up in the sandbox view and clearly marks it as not-real to anyone else who opens the base.</li>
+    <li>If you're testing the full intake path, create the matching EPO record with the same <code>ZZZ STAFF TEST</code> prefix in its Event Name, so it's identifiable end-to-end across EPO, Bookings, and the Asana task Zap 1 creates for it.</li>
+    <li>Don't reuse or edit the older <code>ZZZ TEST</code> records already in the base (Riverside Academy, Sunridge Community Center, the sync-verification record, "ZAP 3 TEST BOOKING"). Those are a separate, older set of build/QA artifacts — leave them alone.</li>
+  </ol>
+</div>
+
+<h2>What to Test</h2>
+<div class="card">
+  <ul>
+    <li>Sample inquiry intake (EPO record → Asana task via Zap 1)</li>
+    <li>Sample booking pricing (checking "Ready for REEF Bookings" → Bookings record via Zap 2)</li>
+    <li>Proposal generation — System 1 (the live Google Sheet/Doc path)</li>
+    <li>Proposal generation — System 2 (the HTML page) — clearly label this as a test in any notes; it's not customer-facing</li>
+    <li>The "Ready to Move Forward" and "Request a Change" buttons on System 2 — expect these to log a response but trigger nothing further (the CTA webhook is still blocked); that's expected, not a bug</li>
+    <li>Confirmed-page generation, if you have access to run the pipeline — otherwise leave this to the build owner</li>
+    <li>The review gate: after generating a proposal/contract package for your test booking, confirm an Asana review task actually appears, assigned to Rose, with the right links attached — and that it's clearly marked as a test needing no real action</li>
+    <li>Moving a test booking to Confirmed, and confirming the EPO + Asana sync actually fires (Zap 3)</li>
+  </ul>
+  <p>Record anything confusing or broken in the "Bugs and Confusing Moments" section of the pilot Asana project — see the Bug-Reporting Process.</p>
+</div>
+
+<div class="warnbox">
+  <strong>Zapier task budget — don't churn records.</strong> REEF is on the Zapier Pro plan: 750 tasks/month, resetting Oct 8, 2026. Every real or <code>ZZZ STAFF TEST</code> record that flows through Zap 1, 2, or 3 consumes plan tasks. A handful of clean passes through the flow is enough to confirm it works — don't loop the same test record through repeatedly just to watch it fire again. If you need to retest something, reuse an existing test record rather than creating a new one each time.
+</div>
+
+<h2>What Staff Should Not Touch</h2>
+<div class="card">
+  <ul>
+    <li>Don't edit real (non-test) booking records just to try something out.</li>
+    <li>Don't rename or delete Airtable fields, views, or automations.</li>
+    <li>Don't run the "Publish Booking Package" GitHub Action against a real customer's booking without a completed review task already in place.</li>
+    <li>Don't send a System 2 proposal link to a real customer.</li>
+    <li>Don't hand-edit the automation-owned Bookings fields: EPO Record ID, Asana Task ID, Agreement Sent Date, Follow-Up Reminder Sent. Zapier writes these; editing them by hand can break the duplicate-check logic.</li>
+    <li>Don't delete any record, real or test — REEF's standing rule is never delete, note issues instead. If a test record needs cleanup, flag it to Martha or Rose rather than removing it yourself.</li>
+  </ul>
+</div>
+
+<div class="okbox">
+  <strong>When in doubt, test it — that's the point of pilot week.</strong> If something feels ambiguous or you're not sure whether an action is safe, ask in the Decisions Needed section of the Asana project rather than guessing on a real record.
+</div>
+
+<div class="footnote">
+  See the Bug-Reporting Process for how to log what you find, and the First-Real-Booking Checklist for what happens once testing is done and a real booking goes through.
+</div>
+
+</main>
+</body>
+</html>

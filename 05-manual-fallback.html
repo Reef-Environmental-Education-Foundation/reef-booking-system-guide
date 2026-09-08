@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REEF OXP Manual Fallback Guide</title>
+<style>
+  :root{
+    --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
+    --ink:#1c2b33; --muted:#5b6b73; --line:#dfe7ea; --bg:#fbfcfc; --card:#ffffff;
+    --future:#6b6f76; --future-bg:#eceef0; --warn:#a33; --warn-bg:#fbeaea;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;padding:26px 32px;}
+  header .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bcd7e6;font-weight:600;}
+  header h1{margin:6px 0 4px;font-size:23px;}
+  header p{margin:0;color:#dcebf2;font-size:13.5px;}
+  header .updated{font-size:11.5px;color:#9fb9c8;margin-top:2px;}
+  main{max-width:900px;margin:0 auto;padding:24px;}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin-bottom:14px;}
+  .item h3{margin:0 0 6px;font-size:15.5px;color:var(--navy-dark);}
+  .item p{margin:4px 0;font-size:13.8px;}
+  .item .fix{background:var(--teal-light);border-radius:6px;padding:8px 12px;margin-top:8px;font-size:13.5px;}
+  .item .fix strong{color:var(--navy-dark);}
+  .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:20px;color:var(--future);background:var(--future-bg);}
+  .footnote{font-size:12.5px;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">REEF Ocean Explorers Booking Workflow — Staff Pilot Handoff</div>
+  <h1>Manual Fallback Guide</h1>
+  <p>What to do by hand for everything that isn't automated yet</p>
+  <p class="updated">2026-09-08</p>
+</header>
+<main>
+
+<div class="item">
+  <h3>Booking moves to Completed or Cancelled <span class="badge">not yet built</span></h3>
+  <p>Only the move to <em>Confirmed</em> automatically syncs to EPO and Asana. Completed and Cancelled do not — that build (Zap 3, Paths A and C) hasn't happened yet.</p>
+  <div class="fix"><strong>Do this by hand:</strong> open the linked EPO record and set its real Status field — "Completed" for Completed, "Canceled/deferred" for Cancelled — and set OXP Booking Status to match the Bookings Status text. Then add a comment on the booking's Asana task noting the change, the same way the automated sync does for Confirmed, so anyone reading the task doesn't have to cross-check Bookings separately.</p>
+</div>
+
+<div class="item">
+  <h3>Customer clicks "Ready to Move Forward" or "Request a Change" <span class="badge">blocked</span></h3>
+  <p>This only exists on System 2's HTML proposal, which isn't customer-facing yet — the webhook behind the button is still blocked (Airtable schema-capture + an expired connection authorization). Nothing happens automatically even in a real customer scenario once System 2 does go live-facing, until this is fixed.</p>
+  <div class="fix"><strong>Do this by hand:</strong> when a customer verbally or by email says yes or asks for changes, update the Bookings record yourself — move Status to Verbal Yes, or note the requested change in Internal Notes / Special Requests and follow up directly. Don't wait on the button to do anything.</p>
+</div>
+
+<div class="item">
+  <h3>Deciding which proposal system to use</h3>
+  <p>Two systems exist. System 1 (Google Sheet → Doc/PDF) is what every real customer gets today. System 2 (six-section HTML page) is fully built but tested only against two TEST bookings — never sent to a real customer.</p>
+  <div class="fix"><strong>Do this by hand:</strong> use System 1 for every real booking during the pilot, no exceptions, until Martha names an owner and a cutover date for System 2. Only use System 2 against <code>ZZZ STAFF TEST</code> records during pilot testing.</p>
+</div>
+
+<div class="item">
+  <h3>A booking's facts disagree across systems</h3>
+  <p>A booking can have facts living in up to three places — Asana, a Dropbox tracking spreadsheet some Coordinators still keep, and the Bookings Airtable record — with nothing cross-referencing them automatically.</p>
+  <div class="fix"><strong>Do this by hand:</strong> treat REEF Bookings' own fields as correct and update the other two to match. Don't assume a spreadsheet or an Asana task description reflects the latest state.</p>
+</div>
+
+<div class="item">
+  <h3>A teacher or group leader wants to submit an inquiry online</h3>
+  <p>The two redesigned public intake forms are still draft, unpublished mockups — not something a teacher can actually reach.</p>
+  <div class="fix"><strong>Do this by hand:</strong> keep using the two existing Asana intake forms ("Program Booking Request" and "REEF Facility Rental & Event Request Form") or take the inquiry by phone/email and create the EPO record or Asana task yourself. Don't point anyone at the draft mockups.</p>
+</div>
+
+<div class="item">
+  <h3>Tracking deal stage in Asana</h3>
+  <p>The plan calls for a "Sales Stage" custom field on the Asana project that mirrors Bookings Status — it doesn't exist yet (blocked on Martha/Rose adding it manually in Asana), so nothing syncs to it.</p>
+  <div class="fix"><strong>Do this by hand:</strong> keep using REEF Bookings' own Status field as the deal-stage authority; don't expect Asana to reflect it until the field exists and the sync (Zap Step 5) is built.</p>
+</div>
+
+<div class="item">
+  <h3>A Confirmed booking needs staffing</h3>
+  <p>Staffing demand doesn't push to REEF Scheduling automatically yet.</p>
+  <div class="fix"><strong>Do this by hand:</strong> once a booking hits Confirmed, send a direct heads-up to whoever assigns staff in Scheduling with the dates, group size, and role needs.</p>
+</div>
+
+<div class="footnote">
+  None of these gaps are hidden from staff on purpose — they're the known, named state of the build as of 2026-09-08. If one of these manual steps gets missed, that's worth a bug report (see the Bug-Reporting Process), not a reason to assume the system handled it.
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REEF OXP Demo Story &amp; Click-Through Path</title>
+<style>
+  :root{
+    --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
+    --ink:#1c2b33; --muted:#5b6b73; --line:#dfe7ea; --bg:#fbfcfc; --card:#ffffff;
+    --live:#1a7a3c; --live-bg:#e7f6ec; --staged:#b25a00; --staged-bg:#fdf0e0; --future:#6b6f76; --future-bg:#eceef0;
+    --gate:#6a3fa0; --gate-bg:#f1e9fb;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;padding:28px 32px;}
+  header .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bcd7e6;font-weight:600;}
+  header h1{margin:6px 0 4px;font-size:24px;}
+  header p{margin:0;color:#dcebf2;font-size:13.5px;}
+  header .updated{font-size:11.5px;color:#9fb9c8;margin-top:2px;}
+  main{max-width:840px;margin:0 auto;padding:28px 24px 70px;}
+  h2{font-size:19px;color:var(--navy);border-bottom:2px solid var(--teal-light);padding-bottom:8px;margin-top:40px;}
+  h3{font-size:15.5px;color:var(--navy-dark);margin-bottom:4px;}
+  .persona{background:var(--teal-light);border:1px solid #bfe0e0;border-radius:10px;padding:16px 20px;margin-bottom:18px;font-size:14.5px;}
+  .beat{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:8px;padding:14px 18px;margin-bottom:12px;}
+  .beat.gate{border-left-color:var(--gate);background:var(--gate-bg);}
+  .beat .who{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700;margin-bottom:4px;}
+  .beat p{margin:6px 0;font-size:14.5px;}
+  .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-left:6px;}
+  .b-live{color:var(--live);background:var(--live-bg);}
+  .b-staged{color:var(--staged);background:var(--staged-bg);}
+  .b-future{color:var(--future);background:var(--future-bg);}
+  .b-gate{color:var(--gate);background:#e6dbf5;}
+  a.link{color:var(--test,#1f5fa8);word-break:break-all;font-size:13.3px;}
+  .path{background:#eef2f3;border-radius:6px;padding:8px 12px;font-size:12.3px;font-family:ui-monospace,Menlo,Consolas,monospace;word-break:break-all;margin:6px 0;}
+  ol.clickseq{padding-left:22px;}
+  ol.clickseq li{margin-bottom:14px;font-size:14.5px;}
+  .quote{font-style:italic;color:#33454e;border-left:3px solid var(--navy);padding-left:12px;margin:8px 0;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">REEF Ocean Explorers Booking Workflow</div>
+  <h1>Demo Story &amp; Click-Through Path</h1>
+  <p>One fictional booking, told from both sides, then walked step by step · staff pilot launch reference</p>
+  <p class="updated">Updated 2026-09-08 for the OXP Booking System staff pilot (originally built for the Sept 3, 2026 staff walkthrough) — Zap 1/2 and the review gate described below are now live in production, not future direction being tested.</p>
+</header>
+<main>
+
+<h2>The Example</h2>
+<div class="persona">
+  <strong>Educator:</strong> Jordan Lee &nbsp;·&nbsp; <strong>School:</strong> Coral Shores Elementary &nbsp;·&nbsp; <strong>Program:</strong> Ocean Explorers Expedition*
+  &nbsp;·&nbsp; <strong>Group:</strong> 32 students, 5 chaperones &nbsp;·&nbsp; <strong>Goal:</strong> a hands-on marine conservation field experience &nbsp;·&nbsp; <strong>Outcome:</strong> clicks "Ready to Move Forward"
+  <p style="margin-top:10px;font-size:12.8px;color:var(--muted);">*Staged originally as a 2-day Expedition rather than a 1-day Discovery Program, to reuse REEF's already-tested demo booking rather than build a new one from scratch — see the Honesty Notes in the original Sept 3 Command Center for why. Everything about the story below works identically for a Discovery Program; only the length changes.</p>
+</div>
+
+<h2>Staff-Side Story</h2>
+
+<div class="beat">
+  <div class="who">Phone / email inquiry arrives</div>
+  <p>Jordan emails REEF directly: "Hi — I teach 5th grade at Coral Shores Elementary, and I'm looking to bring 32 students and 5 chaperones down for a marine conservation experience this spring. Can you tell me more?"</p>
+  <p class="quote">Today, whoever receives that email either routes it into one of the two Asana intake forms, or manually creates a task using the standard checklist. There's no automatic capture of a raw email — the public intake forms are still draft mockups.</p>
+</div>
+
+<div class="beat">
+  <div class="who">Staff captures it <span class="badge b-live">live</span></div>
+  <p>A Coordinator creates one record in EPO: Jordan's name, Coral Shores Elementary, an estimated group size of 37, program format interest, and what they're hoping to get out of it. <code>OXP Opportunity Stage</code> is set to <strong>Inquiry</strong>.</p>
+  <p><a class="link" href="https://airtable.com/appCK2qlT3WHdhYKd/tblxmKRKrel92X6Mv/recjcw6zQ1ulAEe99" target="_blank">→ Open the real EPO record built for this demo</a></p>
+</div>
+
+<div class="beat">
+  <div class="who">Staff qualifies it <span class="badge b-live">live</span></div>
+  <p>A quick call confirms: real dates in the works, real budget authority, a workable group size. The Coordinator judges this worth pursuing. The moment the record is saved with Status = Inquiry, a matching Asana task is created automatically — routed to <em>OXP New Reservation Workflow</em> since this is a program request, not a facility rental. This is Zap 1, live in production.</p>
+  <p><a class="link" href="https://app.asana.com/0/1208312572861835/1218132132348700" target="_blank">→ Open the real Asana task built for this demo</a></p>
+</div>
+
+<div class="beat">
+  <div class="who">Staff creates/links the booking, pricing runs <span class="badge b-live">live</span></div>
+  <p>Once the Coordinator checks "Ready for REEF Bookings," a priced record is created automatically in REEF Bookings (Zap 2, live): group composition, dates, activities. The formulas take it from there — free chaperones, program fees, supplies, campus facility fee, uplift, total, payment schedule.</p>
+  <p><a class="link" href="https://airtable.com/app3FIECuG8iQr7kY/tbl9Jb9UVSYLQ1Puc/rec4YP9ruVPOD90US" target="_blank">→ Open the priced booking (REEF's real "Riverside Academy" test record — same 32/5 group size, standing in for Jordan Lee here)</a></p>
+</div>
+
+<div class="beat">
+  <div class="who">Staff generates the proposal <span class="badge b-live">system 1</span> <span class="badge b-staged">system 2</span></div>
+  <p>Today: one click in the "OXP Proposal Generator" Google Sheet builds a branded Google Doc/PDF from the same numbers. Being tested: a webpage-style proposal with the same numbers, a nicer day-by-day layout, and a live "Ready to Move Forward" button — tested against two TEST bookings only, not yet used with a real customer.</p>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1sEKixhJCNatGfVZ5_5JRJkwxgK467TsgWR4u7x8rpnQ/edit" target="_blank">→ System 1: the real proposal generator Sheet</a></p>
+  <div class="path">System 2 (open locally): REEF Booking System / Customer Page Polish - Sept 2026 Sprint / Proposal Redesign Review (Claude 09-02) / ocean-explorers-proposal-riverside-academy.html</div>
+</div>
+
+<div class="beat gate">
+  <div class="who">Before either proposal goes out — the review gate <span class="badge b-gate">live, tested end-to-end</span></div>
+  <p>The moment a proposal or contract link is generated for a booking, the pipeline automatically creates an Asana review task assigned to Rose, with the proposal and contract links attached. This is a pure process gate — nothing sends automatically when the task is checked off — but no one should hand a link to a customer until that review task exists and has been looked over. It's the main safety net against a half-generated or wrong proposal reaching a real customer.</p>
+</div>
+
+<div class="beat">
+  <div class="who">Staff sees the customer's response, advances the next step <span class="badge b-staged">tested, not launched</span></div>
+  <p>When Jordan clicks "Ready to Move Forward" on the webpage proposal (System 2 only — not live for real customers yet), the system logs the response, the timestamp, and which version of the proposal they saw — and flags the booking for a staff member to review and manually move Status to <strong>Verbal Yes</strong>. Nothing auto-advances the lifecycle; a person always makes that call.</p>
+</div>
+
+<h2>Customer-Side Story</h2>
+
+<div class="beat">
+  <div class="who">1. Jordan inquires</div>
+  <p>Jordan finds REEF online or hears about Ocean Explorers from a colleague, and reaches out describing the group and the goal: get students out of the classroom and into real marine conservation work.</p>
+</div>
+
+<div class="beat">
+  <div class="who">2. Jordan has a discovery call</div>
+  <p>A REEF Coordinator calls to talk through dates, group size, activities of interest, and budget range — the same information captured in the EPO record above.</p>
+</div>
+
+<div class="beat">
+  <div class="who">3. Jordan receives a proposal</div>
+  <p>A few days later, a proposal arrives — today, a PDF; in the system being tested, a link to a page. Either way, it lays out the itinerary, what's included, and the price — and either way, a staff member has already reviewed it via the review-gate task before it was sent.</p>
+</div>
+
+<div class="beat">
+  <div class="who">4. Jordan reviews clear price and details</div>
+  <p>The pricing is presented simply: a per-student rate ($298) and a plain sentence about the free-chaperone policy (4 of 5 chaperones travel free) — not a line-item invoice. Jordan can see exactly what each day looks like.</p>
+</div>
+
+<div class="beat">
+  <div class="who">5. Jordan clicks "Ready to Move Forward"</div>
+  <p>Convinced, Jordan clicks the button. A confirmation message appears immediately: someone from REEF will follow up on next steps. (If Jordan instead wanted changes, "Request a Change" opens a message box — REEF's own test of this path confirmed both directions log correctly.)</p>
+</div>
+
+<div class="beat">
+  <div class="who">6. Jordan gets next-step expectations</div>
+  <p>Once the group is confirmed, Jordan's program page goes live — the day-by-day schedule, what to bring, and an "Action Needed" banner whenever something needs their attention (like signing the agreement in Zoho Sign).</p>
+  <p><a class="link" href="https://reef-environmental-education-foundation.github.io/reef-program-pages/bookings/sample-ocean-explorers-2day/" target="_blank">→ See what that confirmed page looks like today (live, real, verified)</a></p>
+</div>
+
+<h2>The Click-Through Path, in Order</h2>
+<ol class="clickseq">
+  <li><strong>Start:</strong> read Jordan's inquiry out loud from this document (or paraphrase it) — this stands in for the original email/call.</li>
+  <li><strong>EPO record</strong> — <a class="link" href="https://airtable.com/appCK2qlT3WHdhYKd/tblxmKRKrel92X6Mv/recjcw6zQ1ulAEe99" target="_blank">open it</a> — this is where staff would capture/review the inquiry.</li>
+  <li><strong>Asana task</strong> — <a class="link" href="https://app.asana.com/0/1208312572861835/1218132132348700" target="_blank">open it</a> — the matching to-do, created automatically (Zap 1, live) in the real OXP New Reservation Workflow project.</li>
+  <li><strong>REEF Bookings record</strong> — <a class="link" href="https://airtable.com/app3FIECuG8iQr7kY/tbl9Jb9UVSYLQ1Puc/rec4YP9ruVPOD90US" target="_blank">open it</a> — pricing and status, calculated live, created automatically (Zap 2, live).</li>
+  <li><strong>Proposal, System 1</strong> — <a class="link" href="https://docs.google.com/spreadsheets/d/1sEKixhJCNatGfVZ5_5JRJkwxgK467TsgWR4u7x8rpnQ/edit" target="_blank">open the Sheet</a> — today's real production tool.</li>
+  <li><strong>Proposal, System 2</strong> — open the local HTML file (path above) — click through to "Ready to Move Forward" live.</li>
+  <li><strong>The review-gate task</strong> — narrate: the moment either proposal is generated, an Asana review task is created for Rose with the links attached (live, tested end-to-end) — nothing goes to a customer before that task is checked.</li>
+  <li><strong>Staff sees the response</strong> — narrate: a staff member would see the Proposal Response field update on the Bookings record and the Next Action note, then manually advance Status.</li>
+  <li><strong>Confirmed customer page</strong> — <a class="link" href="https://reef-environmental-education-foundation.github.io/reef-program-pages/bookings/sample-ocean-explorers-2day/" target="_blank">open it</a> — what Jordan sees after saying yes.</li>
+  <li><strong>Status sync back to EPO</strong> — narrate: moving the booking to Confirmed automatically pushes status/headcount/price to EPO and comments on the Asana task (Zap 3, live). Completed and Cancelled don't sync yet — that's manual for now.</li>
+  <li><strong>Where Asana and Scheduling fit next</strong> — narrate only: a "Sales Stage" field to mirror Booking Status onto the Asana task doesn't exist yet (blocked on Martha/Rose adding it in Asana); staffing demand should push to REEF Scheduling on Confirmed (designed, not yet built).</li>
+</ol>
+
+</main>
+</body>
+</html>

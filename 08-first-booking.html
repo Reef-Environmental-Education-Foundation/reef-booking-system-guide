@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REEF OXP First-Real-Booking Checklist</title>
+<style>
+  :root{
+    --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
+    --ink:#1c2b33; --muted:#5b6b73; --line:#dfe7ea; --bg:#fbfcfc; --card:#ffffff;
+    --gate:#6a3fa0; --gate-bg:#f1e9fb;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;padding:26px 32px;}
+  header .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bcd7e6;font-weight:600;}
+  header h1{margin:6px 0 4px;font-size:23px;}
+  header p{margin:0;color:#dcebf2;font-size:13.5px;}
+  header .updated{font-size:11.5px;color:#9fb9c8;margin-top:2px;}
+  main{max-width:900px;margin:0 auto;padding:24px;}
+  h2{font-size:17px;color:var(--navy);border-bottom:2px solid var(--teal-light);padding-bottom:6px;margin-top:34px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin-bottom:12px;}
+  .card p{margin:4px 0;font-size:13.8px;}
+  ul.check{list-style:none;padding-left:0;font-size:13.8px;}
+  ul.check li{padding:8px 4px 8px 30px;position:relative;border-bottom:1px solid var(--line);}
+  ul.check li:last-child{border-bottom:none;}
+  ul.check li:before{content:"☐";position:absolute;left:2px;top:8px;color:var(--teal);font-size:16px;}
+  .gatebox{background:var(--gate-bg);border:1px solid #d9c7ef;border-left:4px solid var(--gate);border-radius:8px;padding:14px 18px;margin-top:14px;}
+  .gatebox strong{color:#4a2a75;}
+  .footnote{font-size:12.5px;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">REEF Ocean Explorers Booking Workflow — Staff Pilot Handoff</div>
+  <h1>First-Real-Booking Checklist</h1>
+  <p>What has to be true before letting a real, non-test booking flow through the pilot system</p>
+  <p class="updated">2026-09-08</p>
+</header>
+<main>
+
+<h2>Picking the Booking</h2>
+<div class="card">
+  <p>The safest first real booking is one with: real flexibility on dates and communication pace (not a rush job), a moderate group size, an OXP program (Discovery or Expedition) rather than a Facility Rental — Facility Rentals are Dylan's smaller-scope workflow and haven't been part of this pilot build — and enough lead time before travel to absorb a manual fallback step if Path A/Completed, Path C/Cancelled, or the CTA webhook gap gets in the way.</p>
+  <p><strong>Staff owner:</strong> Rose, as OXP Coordinator, with Chesley as her supervisor and escalation point for anything pilot-related.</p>
+</div>
+
+<h2>Before You Start</h2>
+<ul class="check">
+  <li>EPO record exists for this booking, with an accurate Opportunity Stage</li>
+  <li>REEF Bookings record exists (created via Zap 2 or manually), with correct group size, dates, and activities</li>
+  <li>Pricing checks out — spot-check the formula totals against what you'd expect</li>
+  <li>Asana task exists, correctly linked to the booking, in the right project (OXP New Reservation Workflow) and section</li>
+</ul>
+
+<h2>Sending the Proposal</h2>
+<ul class="check">
+  <li>Using System 1 (Google Doc/PDF) — not System 2, for any real customer</li>
+  <li>If a page/contract package was generated for this booking, a review task exists in Asana assigned to Rose</li>
+  <li>The review task has actually been checked off by a person before the link goes to the customer</li>
+</ul>
+
+<div class="gatebox">
+  <strong>Do not skip the review-gate check.</strong> This is the one step in this whole checklist that exists specifically to catch a bad proposal before a real customer sees it. If you can't confirm a review task was completed, don't send the link — go find out first.
+</div>
+
+<h2>As the Booking Progresses</h2>
+<ul class="check">
+  <li>Status changes (Verbal Yes → Contracted → Confirmed) are made deliberately by a person, not assumed</li>
+  <li>When Status reaches Confirmed, confirm the EPO + Asana sync actually fired (Zap 3) — check EPO's OXP Booking Status and the Asana task comment</li>
+  <li>Scheduling has been given a manual heads-up with dates, group size, and staffing needs — this doesn't push automatically yet</li>
+  <li>Everyone involved knows Completed/Cancelled won't sync automatically when the time comes — see the Manual Fallback Guide, and know who owns doing that by hand for this specific booking</li>
+</ul>
+
+<h2>After the Program</h2>
+<ul class="check">
+  <li>Once the program finishes (or is cancelled), update EPO's Status by hand and comment on the Asana task — this booking's outcome, whichever it is, won't sync itself</li>
+  <li>Capture anything that broke or felt confusing in the Bugs and Confusing Moments section — a real booking surfaces things test records won't</li>
+  <li>Debrief with Martha/Rose/Chesley on whether this booking's experience is good enough to call the pilot ready for a second real booking, or whether something needs fixing first</li>
+</ul>
+
+<div class="footnote">
+  This checklist assumes everything named in the Known Blockers list (Quick Start Guide) and the Manual Fallback Guide is still true at the time you run it — re-check the Asana project's Start Here section for anything that's changed since 2026-09-08.
+</div>
+
+</main>
+</body>
+</html>

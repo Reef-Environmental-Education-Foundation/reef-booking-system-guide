@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REEF OXP 8-Stage Bookings Status Guide</title>
+<style>
+  :root{
+    --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
+    --ink:#1c2b33; --muted:#5b6b73; --line:#dfe7ea; --bg:#fbfcfc; --card:#ffffff;
+    --live:#1a7a3c; --live-bg:#e7f6ec; --staged:#b25a00; --staged-bg:#fdf0e0; --future:#6b6f76; --future-bg:#eceef0;
+    --gate:#6a3fa0; --gate-bg:#f1e9fb;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;padding:26px 32px;}
+  header .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bcd7e6;font-weight:600;}
+  header h1{margin:6px 0 4px;font-size:23px;}
+  header p{margin:0;color:#dcebf2;font-size:13.5px;}
+  header .updated{font-size:11.5px;color:#9fb9c8;margin-top:2px;}
+  main{max-width:900px;margin:0 auto;padding:24px;}
+  .stage{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin-bottom:14px;position:relative;}
+  .stage .n{position:absolute;top:-10px;left:16px;background:var(--navy);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:12px;}
+  .stage h3{margin:6px 0 8px;font-size:16px;color:var(--navy-dark);}
+  .stage p{margin:4px 0;font-size:13.8px;}
+  .stage .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+  .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:20px;}
+  .b-live{color:var(--live);background:var(--live-bg);}
+  .b-staged{color:var(--staged);background:var(--staged-bg);}
+  .b-future{color:var(--future);background:var(--future-bg);}
+  .b-gate{color:var(--gate);background:var(--gate-bg);}
+  .footnote{font-size:12.5px;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">REEF Ocean Explorers Booking Workflow — Staff Pilot Handoff</div>
+  <h1>8-Stage Bookings Status Guide</h1>
+  <p>What each REEF Bookings Status means, who moves it, and what fires automatically</p>
+  <p class="updated">2026-09-08</p>
+</header>
+<main>
+
+<div class="stage">
+  <span class="n">1</span>
+  <h3>Quoting</h3>
+  <p>Starting point. The Bookings record exists — either created automatically once EPO's "Ready for REEF Bookings" is checked (Zap 2, live), or manually. Staff refines group size, dates, and activities; the pricing formulas calculate as fields fill in. No customer has seen numbers yet.</p>
+  <div class="row"><span class="badge b-live">record creation: live (Zap 2)</span></div>
+</div>
+
+<div class="stage">
+  <span class="n">2</span>
+  <h3>Proposal Sent</h3>
+  <p>Staff has sent a proposal to the customer — today, System 1's Google Doc/PDF. <code>Proposal Sent Date</code> gets set. If the reef-program-pages pipeline was run to generate a page/contract for this booking, a review task exists in Asana (assigned to Rose) and must be checked off <em>before</em> that link goes to the customer.</p>
+  <div class="row"><span class="badge b-gate">review gate applies whenever a page/contract is generated</span></div>
+</div>
+
+<div class="stage">
+  <span class="n">3</span>
+  <h3>Verbal Yes</h3>
+  <p>Customer has given verbal commitment (by phone/email today; via System 2's "Ready to Move Forward" button once that's customer-facing). Staff prepares the agreement. No status change here is automatic — a person always makes this call, even once System 2 is live.</p>
+</div>
+
+<div class="stage">
+  <span class="n">4</span>
+  <h3>Contracted</h3>
+  <p>Signed agreement and deposit received. Zoho Sign integration is still a placeholder, so getting the signature is a manual/offline step today, not something the system tracks live.</p>
+</div>
+
+<div class="stage">
+  <span class="n">5</span>
+  <h3>Confirmed</h3>
+  <p>The booking is locked in. Moving Status to Confirmed automatically pushes Status, headcount (# Attendees), and price (Total Package Price, sanity-capped at $30,000) to EPO, and comments on the linked Asana task. This is also typically when the confirmed customer page gets published via the GitHub Actions pipeline.</p>
+  <div class="row"><span class="badge b-live">EPO + Asana sync: live (Zap 3, Confirmed path)</span></div>
+</div>
+
+<div class="stage">
+  <span class="n">6</span>
+  <h3>In Progress</h3>
+  <p>The program is underway. No automation is tied to this stage today — it's a manual marker for staff/Scheduling visibility.</p>
+</div>
+
+<div class="stage">
+  <span class="n">7</span>
+  <h3>Completed</h3>
+  <p>The program has finished. This <strong>should</strong> push Status to EPO and comment on the Asana task the same way Confirmed does — but that path (Zap 3, Path A) isn't built yet. Update EPO by hand for now: set real Status to "Completed" and comment on the Asana task yourself. See the Manual Fallback Guide.</p>
+  <div class="row"><span class="badge b-future">EPO + Asana sync: not yet built</span></div>
+</div>
+
+<div class="stage">
+  <span class="n">8</span>
+  <h3>Cancelled</h3>
+  <p>Booking called off — can happen from any stage, any time. Same gap as Completed: the sync back to EPO (Status → "Canceled/deferred") isn't built yet (Zap 3, Path C). Update EPO by hand. See the Manual Fallback Guide.</p>
+  <div class="row"><span class="badge b-future">EPO + Asana sync: not yet built</span></div>
+</div>
+
+<div class="footnote">
+  The review-gate task is not tied to one specific stage transition — it's created whenever staff run the booking-package pipeline to generate a confirmed page and/or contract, whatever the current Status. Treat "is there a completed review task for this booking's latest proposal/contract" as its own always-relevant check, separate from Status. Full sync mechanics: <em>Zapier_Sync_Automation_Closeout_2026-09-04.md</em> and <em>Review_Gate_Closeout_2026-09-04.md</em> in the REEF Bookings Claude Project.
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REEF OXP Source-of-Truth Map</title>
+<style>
+  :root{
+    --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
+    --ink:#1c2b33; --muted:#5b6b73; --line:#dfe7ea; --bg:#fbfcfc; --card:#ffffff;
+    --live:#1a7a3c; --live-bg:#e7f6ec; --staged:#b25a00; --staged-bg:#fdf0e0; --future:#6b6f76; --future-bg:#eceef0;
+    --warn:#a33; --warn-bg:#fbeaea;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;padding:26px 32px;}
+  header .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bcd7e6;font-weight:600;}
+  header h1{margin:6px 0 4px;font-size:23px;}
+  header p{margin:0;color:#dcebf2;font-size:13.5px;}
+  header .updated{font-size:11.5px;color:#9fb9c8;margin-top:2px;}
+  main{max-width:900px;margin:0 auto;padding:24px;}
+  h2{font-size:17px;color:var(--navy);border-bottom:2px solid var(--teal-light);padding-bottom:6px;margin-top:34px;}
+  .system{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin-bottom:14px;}
+  .system h3{margin:0 0 6px;font-size:15.5px;color:var(--navy-dark);}
+  .system p{margin:4px 0;font-size:13.8px;}
+  .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:20px;background:var(--teal-light);color:var(--navy-dark);margin-left:6px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card);margin-top:8px;}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{background:#f2f6f7;color:var(--navy-dark);font-size:12px;text-transform:uppercase;}
+  .warnbox{background:var(--warn-bg);border:1px solid #eec9c9;border-left:4px solid var(--warn);border-radius:8px;padding:14px 18px;margin-top:18px;}
+  .warnbox strong{color:#7a2323;}
+  .footnote{font-size:12.5px;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">REEF Ocean Explorers Booking Workflow — Staff Pilot Handoff</div>
+  <h1>Source-of-Truth Map</h1>
+  <p>Which system owns which facts, and where to look when two systems seem to disagree</p>
+  <p class="updated">2026-09-08</p>
+</header>
+<main>
+
+<h2>The Four (Really Five) Systems</h2>
+
+<div class="system">
+  <h3>EPO <span class="tag">Airtable</span></h3>
+  <p><strong>Owns:</strong> people, organizations, and the earliest stage of an inquiry — before it's worth pricing.</p>
+  <p><strong>Covers:</strong> prospect → Inquiry only. Once a record is checked "Ready for REEF Bookings," EPO keeps a read-only mirror of Status via <code>OXP Booking Status</code>, but REEF Bookings is now the authority on deal stage.</p>
+  <p><strong>Also holds:</strong> vendor and contact identity that Bookings and Vendors records link back to (EPO Organization Record ID / EPO Record ID fields) — don't re-key contact info directly in Bookings if it already exists in EPO.</p>
+</div>
+
+<div class="system">
+  <h3>REEF Bookings <span class="tag">Airtable</span></h3>
+  <p><strong>Owns:</strong> pricing, proposals, and the booking lifecycle from the moment a record graduates out of EPO.</p>
+  <p><strong>Covers:</strong> Quoting → Proposal Sent → Verbal Yes → Contracted → Confirmed → In Progress → Completed (+ Cancelled, any time). See the 8-Stage Bookings Status Guide for what each stage means.</p>
+  <p><strong>Rule of thumb:</strong> once a booking exists in REEF Bookings, its Status field is the single authority on deal stage — not EPO, not Asana, not a spreadsheet.</p>
+</div>
+
+<div class="system">
+  <h3>Asana</h3>
+  <p><strong>Owns:</strong> staff tasks, reminders, rollout/testing work, and work coordination — the to-do list, not the deal-stage authority.</p>
+  <p><strong>Also owns:</strong> the review-gate task. Whenever a proposal or contract package is generated for a booking, a review task is created here (assigned to Rose) — nothing goes to a customer until that's checked off. This is currently the only place that gate lives; it isn't mirrored anywhere else.</p>
+</div>
+
+<div class="system">
+  <h3>Scheduling</h3>
+  <p><strong>Owns:</strong> staffing needs and assignments, once a program is real enough to staff. Not yet wired to auto-receive staffing demand from a Confirmed booking — today this is a manual heads-up from whoever's coordinating the booking to whoever assigns staff.</p>
+</div>
+
+<div class="system">
+  <h3>Google Drive / the Proposal Generator Sheet</h3>
+  <p><strong>Owns:</strong> System 1's generated proposals (Google Doc/PDF) and supporting files — this is what every real customer sees today. The "OXP Proposal Generator" Sheet pulls straight from REEF Bookings' numbers; it doesn't write anything back.</p>
+</div>
+
+<h2>Quick Reference — Where to Look, by Question</h2>
+<table>
+  <tr><th>Question</th><th>Check this</th></tr>
+  <tr><td>Is this a real lead worth pricing?</td><td>EPO — Opportunity Stage</td></tr>
+  <tr><td>What's this booking's actual deal stage?</td><td>REEF Bookings — Status field, always (never EPO's mirror, never a spreadsheet)</td></tr>
+  <tr><td>What's the price / payment schedule?</td><td>REEF Bookings — the formula fields on the record</td></tr>
+  <tr><td>Has someone reviewed this proposal/contract before it went out?</td><td>Asana — look for a review task assigned to Rose linked to this booking</td></tr>
+  <tr><td>What does staff still need to do on this booking?</td><td>Asana task, and the Bookings record's Next Action / Follow-up Date fields</td></tr>
+  <tr><td>Who's staffing this program?</td><td>Scheduling (manual handoff today — ask the Coordinator if unsure)</td></tr>
+  <tr><td>What did the customer actually see?</td><td>Google Drive proposal Sheet/PDF (System 1) — not the HTML System 2 page unless you know this booking was a staff test</td></tr>
+</table>
+
+<div class="warnbox">
+  <strong>A booking's facts can live in up to three places at once</strong> — Asana, a Dropbox tracking spreadsheet some Coordinators still keep, and the REEF Bookings Airtable record — with nothing cross-referencing them automatically. When two disagree, trust REEF Bookings' own fields first, then update the others by hand to match. Don't assume they're already in sync.
+</div>
+
+<div class="footnote">
+  Full technical detail: <em>Booking_Lifecycle_SOPs.md</em> and <em>REEF_Airtable_Ecosystem_Context.md</em> in the REEF Booking System Dropbox folder.
+</div>
+
+</main>
+</body>
+</html>

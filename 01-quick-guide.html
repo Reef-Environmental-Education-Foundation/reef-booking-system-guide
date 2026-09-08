@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REEF OXP Booking — Staff Quick Guide</title>
+<style>
+  :root{
+    --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
+    --ink:#1c2b33; --muted:#5b6b73; --line:#dfe7ea; --bg:#fbfcfc; --card:#ffffff;
+    --live:#1a7a3c; --live-bg:#e7f6ec; --staged:#b25a00; --staged-bg:#fdf0e0; --future:#6b6f76; --future-bg:#eceef0;
+    --gate:#6a3fa0; --gate-bg:#f1e9fb;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.5;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;padding:26px 32px;}
+  header .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bcd7e6;font-weight:600;}
+  header h1{margin:6px 0 4px;font-size:23px;}
+  header p{margin:0;color:#dcebf2;font-size:13.5px;}
+  main{max-width:880px;margin:0 auto;padding:24px;}
+  .flow{display:flex;flex-direction:column;gap:10px;margin-bottom:30px;}
+  .flowstep{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;display:flex;gap:14px;align-items:flex-start;}
+  .flowstep .num{background:var(--teal);color:#fff;font-weight:700;font-size:13px;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .flowstep .txt strong{color:var(--navy-dark);font-size:14.5px;}
+  .flowstep .txt p{margin:4px 0 0;font-size:13.8px;color:#33454e;}
+  .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-left:8px;}
+  .b-live{color:var(--live);background:var(--live-bg);}
+  .b-staged{color:var(--staged);background:var(--staged-bg);}
+  .b-future{color:var(--future);background:var(--future-bg);}
+  .b-gate{color:var(--gate);background:var(--gate-bg);}
+  h2{font-size:17px;color:var(--navy);border-bottom:2px solid var(--teal-light);padding-bottom:6px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card);margin-top:8px;}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);}
+  th{background:#f2f6f7;color:var(--navy-dark);font-size:12px;text-transform:uppercase;}
+  .footnote{font-size:12.5px;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px;}
+  .gatebox{background:var(--gate-bg);border:1px solid #d9c7ef;border-left:4px solid var(--gate);border-radius:8px;padding:14px 18px;margin-bottom:22px;}
+  .gatebox strong{color:#4a2a75;font-size:14.5px;}
+  .gatebox p{margin:6px 0 0;font-size:13.8px;color:#33454e;}
+  .blockerlist{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 20px;margin-top:8px;font-size:13.5px;}
+  .blockerlist li{margin-bottom:6px;}
+  .updated{font-size:11.5px;color:#9fb9c8;margin-top:2px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">REEF Ocean Explorers Booking Workflow</div>
+  <h1>Staff Quick Guide — At a Glance</h1>
+  <p>What to do at each stage, and where it lives · staff pilot launch reference</p>
+  <p class="updated">Updated 2026-09-08 for the OXP Booking System staff pilot (originally built for the Sept 3, 2026 staff walkthrough)</p>
+</header>
+<main>
+
+<h2>The Flow, Start to Finish</h2>
+<div class="flow">
+  <div class="flowstep">
+    <div class="num">1</div>
+    <div class="txt"><strong>When an inquiry comes in, start here</strong> <span class="badge b-live">live</span>
+    <p>A teacher or group leader emails, calls, or submits a form. Today, that means the "Program Booking Request" or "Internal Discovery Program Booking" form in Asana — or, if it comes straight to you by email, manually create a task in <em>OXP New Reservation Workflow</em> using the standard checklist. If a Coordinator instead creates the record directly in EPO with Status = Inquiry, the matching Asana task is now created for you automatically — this sync (Zap 1) is live in production, not a pilot feature.</p>
+    </div>
+  </div>
+  <div class="flowstep">
+    <div class="num">2</div>
+    <div class="txt"><strong>When it is qualified, this happens</strong> <span class="badge b-live">live</span>
+    <p>Confirm the basics — organization, contact, dates, group size, program type. Decide if it's a real fit. If yes, move it forward: work the Asana checklist, and in EPO flip the Opportunity Stage and check "Ready for REEF Bookings." Once checked, a priced Bookings record is created for you automatically (Zap 2, live) — no more manually re-entering the same details into Airtable.</p>
+    </div>
+  </div>
+  <div class="flowstep">
+    <div class="num">3</div>
+    <div class="txt"><strong>When pricing is needed, use this</strong> <span class="badge b-live">live</span>
+    <p>REEF Bookings in Airtable. Enter group size, dates, and activities — the pricing formulas (program fees, supplies, campus facility fee, free-chaperone policy, uplift, payment schedule) calculate automatically. No more Excel Rate Calculator for Expeditions.</p>
+    </div>
+  </div>
+  <div class="flowstep">
+    <div class="num">4</div>
+    <div class="txt"><strong>When proposal is sent, watch this</strong> <span class="badge b-live">system 1: live</span> <span class="badge b-staged">system 2: tested only</span>
+    <p>Today, every real proposal goes out as a Google Doc/PDF, generated in one click from the "OXP Proposal Generator" Google Sheet, pulling straight from the Airtable numbers. We're separately testing a webpage-style proposal with a "Ready to Move Forward" button — fully built and tested against two TEST bookings only, never yet used with a real customer. Use System 1 for every real booking during the pilot unless Martha tells you otherwise.</p>
+    </div>
+  </div>
+</div>
+
+<div class="gatebox">
+  <strong>Before anything reaches a customer — the review gate <span class="badge b-live" style="margin-left:6px;">live, tested end-to-end</span></strong>
+  <p>Whenever a proposal or contract link is generated for a booking, the system automatically creates an Asana review task assigned to Rose, with the proposal/contract links attached. Nothing goes to a customer until a person has looked it over and checked it off — this is the main safety net against a half-generated or wrong proposal reaching a real customer. If you don't see a review task and a link is waiting to go out, stop and flag it — that's a bug, not a shortcut.</p>
+</div>
+
+<div class="flow">
+  <div class="flowstep">
+    <div class="num">5</div>
+    <div class="txt"><strong>When customer says yes (or requests changes), do this</strong> <span class="badge b-live">live</span>
+    <p>Verbal commitment → move Status to <em>Verbal Yes</em>, prepare the agreement. Signed + deposit → <em>Contracted</em>, then <em>Confirmed</em>. If they ask for changes, update the booking and resend — status stays at Proposal Sent until they confirm.</p>
+    </div>
+  </div>
+  <div class="flowstep">
+    <div class="num">6</div>
+    <div class="txt"><strong>When Status moves to Confirmed, this syncs back</strong> <span class="badge b-live">live</span> <span class="badge b-future">Completed / Cancelled: not yet</span>
+    <p>Moving a booking to <em>Confirmed</em> automatically pushes the status, headcount, and price to EPO and comments on the Asana task. Moving to <em>Completed</em> or <em>Cancelled</em> does <strong>not</strong> sync yet — update EPO's status by hand for those two until this is built. See the Manual Fallback Guide.</p>
+    </div>
+  </div>
+  <div class="flowstep">
+    <div class="num">7</div>
+    <div class="txt"><strong>When it is confirmed, Scheduling takes over</strong> <span class="badge b-future">not yet automatic</span>
+    <p>Staffing demand (roles/counts needed) gets populated on the booking and should push automatically into REEF Scheduling — that connection isn't wired up yet, so today this is still a manual heads-up to whoever assigns staff.</p>
+    </div>
+  </div>
+</div>
+
+<h2>Known Blockers This Pilot Week</h2>
+<div class="blockerlist">
+  <ul>
+    <li><strong>Completed / Cancelled sync isn't built.</strong> Only moving a booking to Confirmed syncs back to EPO + Asana automatically. Update EPO by hand for the other two for now.</li>
+    <li><strong>The "Ready to Move Forward" button doesn't do anything live yet.</strong> The webhook behind it is still blocked (schema capture + an expired authorization) — customers can't trigger anything by clicking it.</li>
+    <li><strong>Two proposal systems exist.</strong> System 1 (Google Doc/PDF) is what real customers get. System 2 (HTML page) is tested but not customer-facing — don't send it to a real customer yet.</li>
+    <li><strong>A booking's facts can live in up to three places</strong> (Asana, a Dropbox tracking spreadsheet, the Bookings Airtable record) with nothing cross-referencing them. When in doubt, trust REEF Bookings' Status field, not the others.</li>
+    <li><strong>The public intake forms are still draft mockups</strong> — not something a teacher can reach yet.</li>
+  </ul>
+</div>
+
+<h2>Status Map — Know Which System Owns What</h2>
+<table>
+  <tr><th>System</th><th>What it tracks</th></tr>
+  <tr><td><strong>EPO</strong></td><td>Prospect → Inquiry only. Anything before it's worth pricing.</td></tr>
+  <tr><td><strong>REEF Bookings</strong></td><td>Quoting → Proposal Sent → Verbal Yes → Contracted → Confirmed → In Progress → Completed (+ Cancelled, any time)</td></tr>
+  <tr><td><strong>Asana</strong></td><td>Task and work management, staff reminders, and the review-gate task before anything reaches a customer</td></tr>
+  <tr><td><strong>Scheduling</strong></td><td>Staffing and assignments, once a program is real enough to staff</td></tr>
+</table>
+
+<div class="footnote">
+  Rule of thumb: before a record is in REEF Bookings, check EPO's Opportunity Stage. Once it's in REEF Bookings, check only REEF Bookings' Status — never both, and never expect them to say the same thing at the same time. Testing during pilot week? Use only <code>ZZZ STAFF TEST</code> records — see the Testing Instructions doc, and don't create/edit real records without a real booking. Full detail: <em>Booking_Lifecycle_SOPs.md</em> and the full Staff Pilot Handoff Packet in the REEF Booking System Dropbox folder.
+</div>
+
+</main>
+</body>
+</html>
