@@ -139,6 +139,24 @@
   <p>Checking <code>Profile Update Requested at Check-in</code> triggers an automation the moment you save it: it creates a new record in Member Profile Update Requests — linked to the attendee and to that specific check-in — sets Status to <strong>Pending Review</strong>, and leaves a note pointing the follow-up team back to the attendee's profile to compare phone, address, email, and name spelling against the Member Database before applying anything. That record lands on <code>4. Admin: Profile Corrections Queue</code> on its own. Unchecking the box, or any other change on the check-in, doesn't create anything — only checking it does. Before this automation was fixed, checking this box didn't go anywhere; if you were ever told to manually open the Corrections Queue and log the correction yourself, that step is gone now.</p>
 </div>
 
+<h2>Big Events (REEF Fest, etc.): Activating Members Fast <span class="badge b-new">new 2026-09-10</span></h2>
+<p class="section-note">For events where most people walking up are already REEF members who've simply never checked in before — three hundred people at REEF Fest, say — asking everyone for their email at the table is too slow. Use this instead.</p>
+
+<div class="item" style="border-left-color:var(--teal);">
+  <h3>The Activate for Check-In button</h3>
+  <ol>
+    <li>Go to page <code>2. Search Members</code> and find the person in REEF's real Member Database — search by name.</li>
+    <li>Open their profile and find the <strong>Activate for Check-In</strong> button.</li>
+    <li>Tap it once. If they don't already have a check-in profile, one is created instantly — pre-filled with their name and email from the Member Database and linked back to their membership record. If they already have one, nothing changes; you've just confirmed they're a member.</li>
+    <li>Open their new profile from there (or search for them again on <code>0. Check In</code>) and finish checking them in as usual — step 4 of the usual flow.</li>
+  </ol>
+</div>
+
+<div class="notebox">
+  <strong>When to use this vs. the usual flow</strong>
+  <p>For day-to-day check-ins, <code>0. Check In</code> is still the front door — most people are found there in one search, no extra steps needed. Reach for <strong>Activate for Check-In</strong> specifically at high-volume events where you already expect most attendees to be existing members: it skips typing an email for anyone who's never checked in before. A small number of very old member records have no email or name on file in the Member Database — if a newly-activated profile comes back blank, just fill in what the person tells you at the table, the same as you would for any brand-new attendee.</p>
+</div>
+
 <h2>REEF Member Record vs. the Legacy Member Number</h2>
 <p class="section-note">Two different fields on a person's profile can look like they answer "are they a member" — only one of them does.</p>
 <table>
@@ -153,7 +171,7 @@
   <tr><th>Page</th><th>What it's for</th></tr>
   <tr><td><strong>0. Check In</strong></td><td>The search-by-name landing page. Start here every time — search, add new people, and open a profile to check someone in.</td></tr>
   <tr><td><strong>1. Search People (EPO)</strong></td><td>A fuller admin view of the same list, with every Member Database lookup field visible at once. Handy for follow-up work; not something you need at the check-in table.</td></tr>
-  <tr><td><strong>2. Search Members</strong></td><td>The real REEF membership list, for confirming "are they actually a member" and linking a REEF Member Record. Read-only.</td></tr>
+  <tr><td><strong>2. Search Members</strong></td><td>The real REEF membership list, for confirming "are they actually a member" and linking a REEF Member Record. Read-only, except for the <strong>Activate for Check-In</strong> button on each profile — see <em>Big Events</em> below.</td></tr>
   <tr><td><strong>3–5. Admin queues</strong></td><td>Membership follow-up, profile corrections, and check-ins-by-event — all after-the-event work, not something you need at the table.</td></tr>
 </table>
 
