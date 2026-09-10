@@ -57,7 +57,7 @@
   <div class="kicker">REEF Events, People &amp; Organizations (EPO) — Free Event Check-In</div>
   <h1>Staff Guide — Free Event Check-In</h1>
   <p>Checking people in at the table, from search to save — plus what changed in the Sept 2026 rebuild</p>
-  <p class="updated">Updated 2026-09-10</p>
+  <p class="updated">Updated 2026-09-10 (Contact Info Confirmation added; corrections now go on the request record, not profile Notes)</p>
 </header>
 <main>
 
@@ -74,8 +74,8 @@
 
   <div class="flowstep">
     <div class="num">2</div>
-    <div class="txt"><strong>Open their profile and read their info back to them</strong>
-    <p>"I have you as Jane, jane@email.com — still good?" Their profile (the <em>Check-In: Attendee Profile</em> page) shows name, email, phone, membership follow-up status, and total events attended. If <strong>REEF Member Record</strong> is linked, tap into it to see their full membership record — address, member since, sustainer status — it opens as a read-only page. If everything checks out, skip to step 4.</p>
+    <div class="txt"><strong>Check <code>Contact Info Confirmation Due</code> before you ask <span class="badge b-new">new 2026-09-10</span></strong>
+    <p>If it says <strong>Confirmed</strong>, their info was verified within the last year — skip the read-back question and go straight to step 4. If it says <strong>Needs Review</strong> (including blank, which just means never confirmed), read their info back to them: "I have you as Jane, jane@email.com — still good?" Their profile (the <em>Check-In: Attendee Profile</em> page) shows name, email, phone, membership follow-up status, and total events attended. If <strong>REEF Member Record</strong> is linked, tap into it to see their full membership record — address, member since, sustainer status — it opens as a read-only page. If everything checks out, set <code>Contact Info Confirmed At Check-in</code> to today's date, then continue to step 4.</p>
     </div>
   </div>
 
@@ -102,6 +102,11 @@
 
 </div>
 
+<div class="notebox">
+  <strong>How Contact Info Confirmation actually works <span class="badge b-note">new 2026-09-10</span></strong>
+  <p>Two fields on the attendee's profile do this: <code>Contact Info Confirmed At Check-in</code> is a date you set by hand when you confirm their info is accurate — there's no button, just pick today's date. <code>Contact Info Confirmation Due</code> reads that date automatically and shows <strong>Confirmed</strong> (within the last 365 days) or <strong>Needs Review</strong> (blank, or over a year old) — that's the one you actually glance at in step 2. Flagging a correction with <code>Profile Update Requested at Check-in</code> is separate and doesn't set the confirmation date — if something's wrong, fix it via that flow (below), don't also mark it confirmed. This applies to every check-in regardless of event size, not just big events — it's not the same thing as Activate for Check-In (see <em>Big Events</em> below), which is about finding members fast, not about contact info.</p>
+</div>
+
 <h2>When Something's Different</h2>
 <p class="section-note">Three situations come up regularly. None of them require leaving the tool or filling out a second form.</p>
 
@@ -111,7 +116,7 @@
     <li>Don't edit anything on their profile to "fix" it — the membership fields sync from REEF's real Member Database and staff edits here won't stick.</li>
     <li>On their check-in row for today (the one you just created in step 4), check the box <code>Profile Update Requested at Check-in</code>.</li>
     <li>That's it — checking the box automatically creates a Pending Review entry in the Profile Corrections Queue for the follow-up team, linked to this exact attendee and this exact visit. You don't need to separately open <code>4. Admin: Profile Corrections Queue</code> and create anything by hand.</li>
-    <li>If you have a second, jot what's actually wrong in the <strong>Notes</strong> field on their profile — it saves the follow-up team a step, but it isn't required.</li>
+    <li><strong>Write the correction on that new request, not on their profile <span class="badge b-new">changed 2026-09-10</span></strong> — a chip for it appears under <code>Member Profile Update Requests</code> on this check-in row. Tap it to expand, then set <strong>Field Changed</strong> and <strong>New Value</strong> to what the attendee told you (Old Value too if you happen to know it). Never write this in the <strong>Notes</strong> field on their profile — that field is permanent and nothing ever clears it, so a correction jotted there looks unresolved forever even after it's fixed.</li>
     <li>Head back and finish checking them in as usual.</li>
   </ol>
 </div>
@@ -136,7 +141,8 @@
 
 <div class="notebox">
   <strong>How the profile-update flag actually reaches someone <span class="badge b-note">what changed 2026-09-10</span></strong>
-  <p>Checking <code>Profile Update Requested at Check-in</code> triggers an automation the moment you save it: it creates a new record in Member Profile Update Requests — linked to the attendee and to that specific check-in — sets Status to <strong>Pending Review</strong>, and leaves a note pointing the follow-up team back to the attendee's profile to compare phone, address, email, and name spelling against the Member Database before applying anything. That record lands on <code>4. Admin: Profile Corrections Queue</code> on its own. Unchecking the box, or any other change on the check-in, doesn't create anything — only checking it does. Before this automation was fixed, checking this box didn't go anywhere; if you were ever told to manually open the Corrections Queue and log the correction yourself, that step is gone now.</p>
+  <p>Checking <code>Profile Update Requested at Check-in</code> triggers an automation the moment you save it: it creates a new record in Member Profile Update Requests — linked to the attendee and to that specific check-in — and sets Status to <strong>Pending Review</strong>. That record lands on <code>4. Admin: Profile Corrections Queue</code> on its own. Unchecking the box, or any other change on the check-in, doesn't create anything — only checking it does. Before this automation was fixed, checking this box didn't go anywhere; if you were ever told to manually open the Corrections Queue and log the correction yourself, that step is gone now.</p>
+  <p style="margin-top:10px;"><strong>Where the actual correction goes</strong> — <span class="badge b-new">changed 2026-09-10</span> the created request no longer defaults <code>Field Changed</code> to "Other" and staff no longer jot the correction in the attendee's profile Notes. Fill in <code>Field Changed</code> and <code>New Value</code> on the request itself (see step above) — that's now the only place a correction should be written. The attendee's own <strong>Notes</strong> field is permanent and untouched by any of this; keep it for genuinely permanent notes about the person, not a pending fix.</p>
 </div>
 
 <h2>Big Events (REEF Fest, etc.): Activating Members Fast <span class="badge b-new">new 2026-09-10</span></h2>
