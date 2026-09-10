@@ -1,8 +1,13 @@
-# REEF Booking System — Staff Guide (Dashboard)
+# REEF Staff Systems Guide (Dashboard)
 
-This is the **live, canonical** staff guide for the REEF Booking System, which covers both
-**Ocean Explorers (OXP)** and **Facility Rentals**. OXP was built out first, so today's content
-is OXP-only; Facility Rentals content will be added here as a second section once it exists.
+This is the **live, canonical** staff guide site covering REEF's front-line Airtable-interface
+workflows: the **REEF Booking System** (**Ocean Explorers/OXP** + **Facility Rentals**) and,
+as of 2026-09-10, **Free Event Check-In** (the EPO base). OXP was built out first, so the booking
+side of the content is OXP-only for now; Facility Rentals content will be added as a second
+booking section once it exists. The repo/URL slug (`reef-booking-system-guide`) predates the
+Check-In section and stays as-is so existing bookmarks keep working — the on-page title and nav
+now read "REEF Staff Systems Guide" to reflect the broader scope. Worth revisiting the slug itself
+if more non-booking sections get added later.
 
 A single navigable dashboard combining the staff pilot handoff documents into one site with a
 persistent sidebar. `index.html` is a thin shell that loads each guide into an iframe and keeps
@@ -23,6 +28,7 @@ should be made here, on `main`, not in Dropbox.
 - `06-testing-instructions.html` — Staff Testing Instructions (OXP)
 - `07-bug-reporting.html` — Bug-Reporting Process (OXP)
 - `08-first-booking.html` — First Real Booking Checklist (OXP)
+- `09-checkin-guide.html` — Free Event Check-In Staff Guide (EPO base, `pbdwEuug1FCa8B6gT`)
 
 Files are flat at the repo root (not nested in a `guides/` folder) because GitHub's web upload
 flow doesn't preserve subfolders when files are added individually.
