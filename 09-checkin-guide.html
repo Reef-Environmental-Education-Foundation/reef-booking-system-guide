@@ -55,138 +55,170 @@
 <body>
 <header>
   <div class="kicker">REEF Events, People &amp; Organizations (EPO) — Free Event Check-In</div>
-  <h1>Staff Guide — Free Event Check-In</h1>
-  <p>Checking people in at the table, from search to save — plus what changed in the Sept 2026 rebuild</p>
-  <p class="updated">Updated 2026-09-10 (Contact Info Confirmation added; corrections now go on the request record, not profile Notes)</p>
+  <h1>Free Event Check-In — Staff Guide</h1>
+  <p>Pick your event once, then check people in from that event's page.</p>
+  <p class="updated">Updated 2026-09-25 (new Event Check-In interface — one page per event)</p>
 </header>
 <main>
 
-<h2>The Usual Flow</h2>
-<p class="section-note">Covers most people who walk up to the table — whether they think they're a member, aren't sure, or say they're brand new.</p>
+<h2>Where to Start <span class="badge b-new">new 2026-09-25</span></h2>
+<p class="section-note">Same starting point every time, no matter what the person tells you at the table.</p>
 <div class="flow">
 
   <div class="flowstep">
     <div class="num">1</div>
-    <div class="txt"><strong>Start on <code>0. Check In</code> every time</strong>
-    <p>This is the search-by-name landing page — bookmark it, it's the same starting point no matter what the person tells you at the table. Type into the search bar (name, email, or member number all work) and tap their row to open their profile.</p>
+    <div class="txt"><strong>Open <code>Start Here - Pick Your Event</code></strong>
+    <p>In Airtable, open the <strong>Event Check-In</strong> interface and go to <code>Start Here - Pick Your Event</code>: <a href="https://airtable.com/appCK2qlT3WHdhYKd/pagJES37hf1R4shmK" target="_blank" rel="noopener">direct link</a>. The <strong>Today</strong> tab shows today's events; <strong>All events</strong> shows the last 2 days and the next 2 weeks.</p>
     </div>
   </div>
 
   <div class="flowstep">
     <div class="num">2</div>
-    <div class="txt"><strong>Check <code>Contact Info Confirmation Due</code> before you ask <span class="badge b-new">new 2026-09-10</span></strong>
-    <p>If it says <strong>Confirmed</strong>, their info was verified within the last year — skip the read-back question and go straight to step 4. If it says <strong>Needs Review</strong> (including blank, which just means never confirmed), read their info back to them: "I have you as Jane, jane@email.com — still good?" Their profile (the <em>Check-In: Attendee Profile</em> page) shows name, email, phone, membership follow-up status, and total events attended. If <strong>REEF Member Record</strong> is linked, tap into it to see their full membership record — address, member since, sustainer status — it opens as a read-only page. If everything checks out, set <code>Contact Info Confirmed At Check-in</code> to today's date, then continue to step 4.</p>
+    <div class="txt"><strong>Tap your event</strong>
+    <p>That event's page is your check-in station for the rest of the session — everything you do there is saved to that event only. The top of the page shows the event name, date/time, location and a live <strong>Check-in Count</strong> (date/time and location can't be edited here).</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="callout">
+  <strong>Two events at once?</strong> Each event has its own page, so two check-in tables never interfere. <strong>Tip:</strong> keep your event page open in its own browser tab — Steps 2 and 3 open in new tabs, and you'll come back to this one.
+</div>
+
+<h2>Step 1 — Check In Someone Already in Our System</h2>
+<p class="section-note">Most people are found here. Always try this first.</p>
+<div class="flow">
+
+  <div class="flowstep">
+    <div class="num">1</div>
+    <div class="txt"><strong>Click the blue <code>Add event</code> button</strong>
+    <p>It's under <strong>STEP 1 - Check in a participant | CHECKED IN (newest first)</strong>. Airtable labels the button "Add event" — it adds a check-in to this event.</p>
+    </div>
+  </div>
+
+  <div class="flowstep">
+    <div class="num">2</div>
+    <div class="txt"><strong>Type the person's name in the Attendee box</strong>
+    <p>In the new row, click the <strong>Attendee</strong> box and type their <strong>name</strong>. Search matches names only, not email.</p>
     </div>
   </div>
 
   <div class="flowstep">
     <div class="num">3</div>
-    <div class="txt"><strong>Two edge cases where you'll want page <code>2. Search Members</code></strong>
-    <p>Their <strong>REEF Member Record</strong> field says <code>+ Add a record</code>: check page 2 for a likely match by name or email and link it there before moving on. They don't show up on page 0 at all <em>and</em> say they're already a member: peek at page 2 to confirm before you create a new profile for them.</p>
+    <div class="txt"><strong>Pick them from the list</strong>
+    <p>Their email fills in next to the name — use it to make sure you picked the right person when two people have similar names.</p>
     </div>
   </div>
 
   <div class="flowstep">
     <div class="num">4</div>
-    <div class="txt"><strong>Scroll to "Check in to today's event"</strong>
-    <p>On their profile, find the check-ins panel, tap <code>+</code>, pick today's event from the list, and save. This is also where the two flag checkboxes live — see <em>When Something's Different</em> below.</p>
-    </div>
-  </div>
-
-  <div class="flowstep">
-    <div class="num">5</div>
-    <div class="txt"><strong>Back to <code>0. Check In</code> for the next person</strong>
-    <p>Use the sidebar to jump back. No form to close, nothing else to submit.</p>
+    <div class="txt"><strong>They appear at the top of the Checked In list</strong>
+    <p>That's your confirmation — there's no pop-up. On to the next person.</p>
     </div>
   </div>
 
 </div>
 
 <div class="notebox">
-  <strong>How Contact Info Confirmation actually works <span class="badge b-note">new 2026-09-10</span></strong>
-  <p>Two fields on the attendee's profile do this: <code>Contact Info Confirmed At Check-in</code> is a date you set by hand when you confirm their info is accurate — there's no button, just pick today's date. <code>Contact Info Confirmation Due</code> reads that date automatically and shows <strong>Confirmed</strong> (within the last 365 days) or <strong>Needs Review</strong> (blank, or over a year old) — that's the one you actually glance at in step 2. Flagging a correction with <code>Profile Update Requested at Check-in</code> is separate and doesn't set the confirmation date — if something's wrong, fix it via that flow (below), don't also mark it confirmed. This applies to every check-in regardless of event size, not just big events — it's not the same thing as Activate for Check-In (see <em>Big Events</em> below), which is about finding members fast, not about contact info.</p>
+  <strong>Can't find them?</strong>
+  <p>Don't create anyone here — go to Step 2.</p>
+</div>
+
+<h2>Step 2 — Not Found? Check If They're a REEF Member</h2>
+<p class="section-note">Use the <strong>NOT FOUND IN STEP 1?</strong> box at the bottom of the event page.</p>
+
+<div class="item" style="border-left-color:var(--teal);">
+  <h3>Search REEF Members <span class="badge b-new">new 2026-09-25</span></h3>
+  <ol>
+    <li>Click the blue <code>Step 2: Search REEF Members</code> button. It opens the REEF member search in a new tab.</li>
+    <li>Search their name or email and tap their name.</li>
+    <li>Confirm it's them (email, city, member number), then click the green <code>Add this member</code> button at the top right.</li>
+    <li>Read <strong>Result - what to do next</strong> on that page:
+      <table>
+        <tr><th>If it says…</th><th>Do this</th></tr>
+        <tr><td><strong>"Added to our system"</strong> or <strong>"Found their existing record and linked their membership"</strong></td><td>Go back to your event tab and check them in with Step 1.</td></tr>
+        <tr><td><strong>"Already in our system as [name]"</strong></td><td>Go back and check in that name with Step 1.</td></tr>
+        <tr><td><strong>"Not added: someone with this email is already in our system"</strong></td><td>Go back, search for the name on that existing record in Step 1, and check them in. It has been flagged for an admin to review — you don't need to do anything else.</td></tr>
+      </table>
+    </li>
+  </ol>
+</div>
+
+<div class="notebox">
+  <strong>Why the extra step?</strong>
+  <p><code>Add this member</code> checks for an existing person first, so we don't end up with two records for the same person. If it finds one, it links their membership to it instead of creating a duplicate.</p>
+</div>
+
+<h2>Step 3 — Brand-New Participant</h2>
+<p class="section-note">Only use Step 3 after Steps 1 and 2 come up empty.</p>
+
+<div class="item" style="border-left-color:var(--teal);">
+  <h3>Add New Participant <span class="badge b-new">checks in automatically</span></h3>
+  <ol>
+    <li>In the same <strong>NOT FOUND IN STEP 1?</strong> box, click <code>Step 3: Add New Participant</code>. A short form opens in a new tab.</li>
+    <li>Fill in <strong>Full name</strong> (required), <strong>Email</strong> (please ask — it lets us match them to their REEF membership), <strong>Phone</strong>, <strong>ZIP code</strong>, and <strong>Which event are they checking in to?</strong> (required — only today's events are listed).</li>
+    <li>Click <code>Add &amp; Check In</code>. They're checked in automatically and appear in your event's Checked In list within a few seconds. Close the form tab and go back to your event page.</li>
+  </ol>
 </div>
 
 <h2>When Something's Different</h2>
-<p class="section-note">Three situations come up regularly. None of them require leaving the tool or filling out a second form.</p>
+<p class="section-note">Each Checked In row shows <strong>Contact Info (last confirmed)</strong> (<strong>Confirmed</strong> or <strong>Needs Review</strong>) and a confirm checkbox. Click <code>Open</code> on a row to see the full check-in panel with the same boxes. None of these require leaving the event page.</p>
 
 <div class="item">
-  <h3>They say their email, address, phone, or name spelling is wrong <span class="badge b-new">now automatic</span></h3>
+  <h3>Confirm their contact info (optional but helpful) <span class="badge b-new">new 2026-09-25</span></h3>
   <ol>
-    <li>Don't edit anything on their profile to "fix" it — the membership fields sync from REEF's real Member Database and staff edits here won't stick.</li>
-    <li>On their check-in row for today (the one you just created in step 4), check the box <code>Profile Update Requested at Check-in</code>.</li>
-    <li>That's it — checking the box automatically creates a Pending Review entry in the Profile Corrections Queue for the follow-up team, linked to this exact attendee and this exact visit. You don't need to separately open <code>4. Admin: Profile Corrections Queue</code> and create anything by hand.</li>
-    <li><strong>Write the correction on that new request, not on their profile <span class="badge b-new">changed 2026-09-10</span></strong> — a chip for it appears under <code>Member Profile Update Requests</code> on this check-in row. Tap it to expand, then set <strong>Field Changed</strong> and <strong>New Value</strong> to what the attendee told you (Old Value too if you happen to know it). Never write this in the <strong>Notes</strong> field on their profile — that field is permanent and nothing ever clears it, so a correction jotted there looks unresolved forever even after it's fixed.</li>
-    <li>Head back and finish checking them in as usual.</li>
+    <li>If Contact Info says <strong>Needs Review</strong>, read their name, email and phone back to them.</li>
+    <li>If it's correct, tick <code>Read their contact info back - correct? Tick to confirm</code> (in the row or in the panel). That automatically records today as their confirmation date — you no longer type a date on their profile.</li>
+    <li><strong>Confirmed</strong> means someone confirmed it within the last year, so you can skip asking.</li>
   </ol>
 </div>
 
 <div class="item">
-  <h3>They've never been to a REEF event</h3>
+  <h3>Their email, phone, address or name spelling is wrong <span class="badge b-note">unchanged process</span></h3>
   <ol>
-    <li>From <code>0. Check In</code>, tap <code>+</code> to add a new person.</li>
-    <li>Name and email are enough to get started — phone is a nice-to-have.</li>
-    <li>Save, then continue at step 4 of the usual flow to check them in.</li>
+    <li>Don't edit their record.</li>
+    <li>Open their check-in row and tick <code>Profile Update Requested at Check-in</code>. A Pending Review request is created automatically and appears under <strong>Member Profile Update Requests</strong> on that check-in.</li>
+    <li>Tap it and fill in <strong>Field Changed</strong> and <strong>New Value</strong> (<strong>Old Value</strong> if you know it). Never write corrections in the <strong>Notes</strong> field on their profile.</li>
+    <li>Don't also tick the confirm box. Ticking the Profile Update box again later won't create a second request.</li>
   </ol>
 </div>
 
 <div class="item">
-  <h3>Two similar names, and you're not confident which is right</h3>
+  <h3>Two similar names and you're not sure you picked the right one</h3>
   <ol>
-    <li>Pick the closest match and check them in — don't leave anyone un-checked-in over this.</li>
-    <li>On that check-in, check the box <code>Possible Duplicate - Needs Review</code>.</li>
-    <li>Don't create a second profile just to be safe — that box is exactly what surfaces it for review after the event instead.</li>
+    <li>Check in the closest match — don't leave anyone un-checked-in over this.</li>
+    <li>Open the row and tick <code>Not sure you picked the right person? Tick for review</code>.</li>
+    <li>Don't create a second person to be safe — an admin reviews these after the event.</li>
   </ol>
 </div>
 
+<div class="item">
+  <h3>You picked the wrong person</h3>
+  <ol>
+    <li>Open the row and change the <strong>Attendee</strong>.</li>
+    <li>Changing the Attendee on a row that's already checked in changes who that check-in belongs to, so do it carefully.</li>
+  </ol>
+</div>
+
+<h2>What Changed on 2026-09-25</h2>
 <div class="notebox">
-  <strong>How the profile-update flag actually reaches someone <span class="badge b-note">what changed 2026-09-10</span></strong>
-  <p>Checking <code>Profile Update Requested at Check-in</code> triggers an automation the moment you save it: it creates a new record in Member Profile Update Requests — linked to the attendee and to that specific check-in — and sets Status to <strong>Pending Review</strong>. That record lands on <code>4. Admin: Profile Corrections Queue</code> on its own. Unchecking the box, or any other change on the check-in, doesn't create anything — only checking it does. Before this automation was fixed, checking this box didn't go anywhere; if you were ever told to manually open the Corrections Queue and log the correction yourself, that step is gone now.</p>
-  <p style="margin-top:10px;"><strong>Where the actual correction goes</strong> — <span class="badge b-new">changed 2026-09-10</span> the created request no longer defaults <code>Field Changed</code> to "Other" and staff no longer jot the correction in the attendee's profile Notes. Fill in <code>Field Changed</code> and <code>New Value</code> on the request itself (see step above) — that's now the only place a correction should be written. The attendee's own <strong>Notes</strong> field is permanent and untouched by any of this; keep it for genuinely permanent notes about the person, not a pending fix.</p>
+  <strong>New Event Check-In interface <span class="badge b-note">what changed 2026-09-25</span></strong>
+  <ul style="margin:6px 0 0;padding-left:1.15em;font-size:13.8px;color:#33454e;">
+    <li>New <strong>Event Check-In</strong> interface: pick the event once; each event has its own check-in page.</li>
+    <li>You check people in from the event page (not from each person's profile).</li>
+    <li>Member search now protects against duplicates: <code>Add this member</code> links an existing person instead of creating a second one, and flags unclear cases for admin review.</li>
+    <li>New participants are checked in automatically from the Step 3 form.</li>
+    <li>Contact info confirmation is now a checkbox on the check-in instead of typing a date on the profile.</li>
+    <li>The old <strong>Free Event Check-In</strong> pages (0, 1 and 2) are retired and marked "OLD - DO NOT USE" — don't use them. Admin queues (Membership Follow-Up, Profile Corrections, Check-ins by Event, Possible Duplicates, Members Linked to 2+ People) live in the <strong>Admin Event Check-In</strong> interface.</li>
+  </ul>
 </div>
-
-<h2>Big Events (REEF Fest, etc.): Activating Members Fast <span class="badge b-new">new 2026-09-10</span></h2>
-<p class="section-note">For events where most people walking up are already REEF members who've simply never checked in before — three hundred people at REEF Fest, say — asking everyone for their email at the table is too slow. Use this instead.</p>
-
-<div class="item" style="border-left-color:var(--teal);">
-  <h3>The Activate for Check-In button</h3>
-  <ol>
-    <li>Go to page <code>2. Search Members</code> and find the person in REEF's real Member Database — search by name.</li>
-    <li>Open their profile and find the <strong>Activate for Check-In</strong> button.</li>
-    <li>Tap it once. If they don't already have a check-in profile, one is created instantly — pre-filled with their name and email from the Member Database and linked back to their membership record. If they already have one, nothing changes; you've just confirmed they're a member.</li>
-    <li>Open their new profile from there (or search for them again on <code>0. Check In</code>) and finish checking them in as usual — step 4 of the usual flow.</li>
-  </ol>
-</div>
-
-<div class="notebox">
-  <strong>When to use this vs. the usual flow</strong>
-  <p>For day-to-day check-ins, <code>0. Check In</code> is still the front door — most people are found there in one search, no extra steps needed. Reach for <strong>Activate for Check-In</strong> specifically at high-volume events where you already expect most attendees to be existing members: it skips typing an email for anyone who's never checked in before. A small number of very old member records have no email or name on file in the Member Database — if a newly-activated profile comes back blank, just fill in what the person tells you at the table, the same as you would for any brand-new attendee.</p>
-</div>
-
-<h2>REEF Member Record vs. the Legacy Member Number</h2>
-<p class="section-note">Two different fields on a person's profile can look like they answer "are they a member" — only one of them does.</p>
-<table>
-  <tr><th>Field</th><th>Use it?</th></tr>
-  <tr><td><strong>REEF Member Record</strong></td><td>Yes — this is the current source of truth. When it's linked, it points to a real row in REEF's actual Member Database (the same list on page 2), and that's where the address / member since / sustainer info comes from. Empty or showing <code>+ Add a record</code> means this person isn't linked yet, even if they insist they're a member.</td></tr>
-  <tr><td><strong>REEF member number (legacy — do not use, see REEF Member Record)</strong></td><td>No — left over from before this base was linked directly to the real Member Database. It still shows up in a couple of places (including a "REEF Member Number at Check-in" lookup that rides along on every check-in record for reference), but don't use it to decide membership status or to look someone up. If a number in this field disagrees with what page 2 shows, page 2 wins.</td></tr>
-</table>
-
-<h2>What's on Each Page</h2>
-<p class="section-note">The tool opens to <code>0. Check In</code> by default. Switch pages using the sidebar.</p>
-<table>
-  <tr><th>Page</th><th>What it's for</th></tr>
-  <tr><td><strong>0. Check In</strong></td><td>The search-by-name landing page. Start here every time — search, add new people, and open a profile to check someone in.</td></tr>
-  <tr><td><strong>1. Search People (EPO)</strong></td><td>A fuller admin view of the same list, with every Member Database lookup field visible at once. Handy for follow-up work; not something you need at the check-in table.</td></tr>
-  <tr><td><strong>2. Search Members</strong></td><td>The real REEF membership list, for confirming "are they actually a member" and linking a REEF Member Record. Read-only, except for the <strong>Activate for Check-In</strong> button on each profile — see <em>Big Events</em> below.</td></tr>
-  <tr><td><strong>3–5. Admin queues</strong></td><td>Membership follow-up, profile corrections, and check-ins-by-event — all after-the-event work, not something you need at the table.</td></tr>
-</table>
 
 <div class="callout">
-  <strong>The short version:</strong> search on <code>0. Check In</code>, open their profile, confirm their info out loud, add a check-in for today's event. New person or outdated info? Handle it in that same profile — you never have to start over or fill out a second form, and a flagged correction now reaches the follow-up team on its own.
+  <strong>The short version:</strong> open <code>Start Here - Pick Your Event</code>, tap your event, and check people in from that page. Not found? Step 2 searches REEF members. Still not found? Step 3 adds them and checks them in. Wrong info or unsure of the match? Tick the box on their check-in row — an admin takes it from there.
 </div>
 
 <div class="footnote">
-  REEF Events, People &amp; Organizations (EPO) base, interface <em>Free Event Check-In</em>. Questions about this tool go to Martha.
+  REEF Events, People &amp; Organizations (EPO) base, interface <em>Event Check-In</em>. Questions about this tool go to Martha.
 </div>
 
 </main>
