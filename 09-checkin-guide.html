@@ -1,194 +1,231 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REEF Free Event Check-In — Staff Guide</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REEF Event Check-In Guide</title>
 <style>
+  /* Layout: one staff reference with two tabs, "Any event" and "REEF Fest". Teal look kept from the earlier guides. */
   :root{
-    --navy:#0b3d5c; --navy-dark:#082a41; --teal:#1f8a8c; --teal-light:#e6f3f3;
-    --ink:#1c2b33; --muted:#5b6b73; --line:#dfe7ea; --bg:#fbfcfc; --card:#ffffff;
-    --flag:#a33; --flag-bg:#fbeaea; --new:#1a7a3c; --new-bg:#e7f6ec; --note:#6a3fa0; --note-bg:#f1e9fb;
+    --ink:#12292b; --paper:#f1f6f5; --surface:#ffffff; --accent:#0e7c86; --accent-ink:#ffffff;
+    --flag:#c1542e; --flag-soft:#fbe9e2; --ok:#2f7d4f; --ok-soft:#e1f2e8;
+    --line:#d2e2e0; --muted:#4c6864; --chip:#e4f0ee;
+    --display:'Fraunces',Georgia,'Times New Roman',serif;
+    --body:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'IBM Plex Mono','SF Mono',monospace;
   }
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;}
-  header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;padding:26px 32px;}
-  header .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bcd7e6;font-weight:600;}
-  header h1{margin:6px 0 4px;font-size:23px;}
-  header p{margin:0;color:#dcebf2;font-size:13.5px;}
-  header .updated{font-size:11.5px;color:#9fb9c8;margin-top:2px;}
-  main{max-width:900px;margin:0 auto;padding:24px;}
-  h2{font-size:17px;color:var(--navy);border-bottom:2px solid var(--teal-light);padding-bottom:6px;margin-top:34px;}
-  h2:first-of-type{margin-top:0;}
-  .section-note{font-size:13.5px;color:var(--muted);margin-top:-4px;margin-bottom:14px;}
-
-  .flow{display:flex;flex-direction:column;gap:10px;margin-bottom:8px;}
-  .flowstep{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;display:flex;gap:14px;align-items:flex-start;}
-  .flowstep .num{background:var(--teal);color:#fff;font-weight:700;font-size:13px;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .flowstep .txt strong{color:var(--navy-dark);font-size:14.5px;}
-  .flowstep .txt p{margin:4px 0 0;font-size:13.8px;color:#33454e;}
-  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.92em;background:var(--teal-light);color:var(--navy-dark);padding:1px 6px;border-radius:4px;}
-
-  .item{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--flag);border-radius:8px;padding:16px 20px;margin-bottom:14px;}
-  .item h3{margin:0 0 8px;font-size:15.5px;color:var(--navy-dark);}
-  .item ol{margin:0;padding-left:1.15em;font-size:13.8px;}
-  .item li{margin-bottom:6px;}
-  .item li:last-child{margin-bottom:0;}
-  .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-left:8px;vertical-align:1px;}
-  .b-new{color:var(--new);background:var(--new-bg);}
-  .b-note{color:var(--note);background:var(--note-bg);}
-
-  .callout{background:var(--teal-light);border-radius:8px;padding:14px 18px;font-size:13.8px;margin-bottom:18px;}
-  .callout strong{color:var(--navy-dark);}
-  .notebox{background:var(--note-bg);border:1px solid #d9c7ef;border-left:4px solid var(--note);border-radius:8px;padding:14px 20px;margin-bottom:18px;}
-  .notebox strong{color:#4a2a75;font-size:14.5px;}
-  .notebox p{margin:6px 0 0;font-size:13.8px;color:#33454e;}
-
-  table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card);margin-top:8px;}
-  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
-  th{background:#f2f6f7;color:var(--navy-dark);font-size:12px;text-transform:uppercase;}
-  td strong{color:var(--navy-dark);}
-
-  .footnote{font-size:12.5px;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px;}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#e7f2f0; --paper:#0b1f21; --surface:#102b2d; --accent:#54c9c3; --accent-ink:#06201f;
+      --flag:#f0946a; --flag-soft:#3a2620; --ok:#6fd09a; --ok-soft:#173a2a;
+      --line:#1f3a3c; --muted:#9fc1bc; --chip:#153436; color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#e7f2f0; --paper:#0b1f21; --surface:#102b2d; --accent:#54c9c3; --accent-ink:#06201f;
+    --flag:#f0946a; --flag-soft:#3a2620; --ok:#6fd09a; --ok-soft:#173a2a;
+    --line:#1f3a3c; --muted:#9fc1bc; --chip:#153436; color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+    padding-inline:16px;padding-block:0 64px}
+  .wrap{max-width:740px;margin:0 auto}
+  h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0}
+  h1{font-size:2rem;line-height:1.2}
+  h2{font-size:1.35rem;margin-bottom:6px}
+  h3{font-size:1.05rem;margin-bottom:4px}
+  p{margin:0}
+  .intro{padding-block:32px 8px}
+  .eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .lede{color:var(--muted);max-width:60ch;margin-top:12px}
+  .open{display:inline-block;margin-top:16px;background:var(--accent);color:var(--accent-ink);font-weight:600;
+    padding:11px 18px;border-radius:8px;text-decoration:none}
+  .open:focus-visible,.tab:focus-visible{outline:3px solid var(--flag);outline-offset:2px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px;border-bottom:1px solid var(--line);padding-bottom:0}
+  .tab{font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+    background:transparent;color:var(--muted);border:1px solid transparent;border-bottom:none;
+    padding:10px 16px;border-radius:8px 8px 0 0;margin-bottom:-1px}
+  .tab[aria-selected="true"]{background:var(--surface);color:var(--accent);border-color:var(--line);font-weight:600}
+  section{margin-top:32px}
+  .note{color:var(--muted);font-size:.95rem;max-width:60ch;margin-bottom:16px}
+  .rule{background:var(--chip);border-radius:10px;padding:18px 20px}
+  .rule strong{color:var(--accent)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;min-width:0}
+  .card p{color:var(--muted);font-size:.93rem;margin-top:6px}
+  .card .who{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .steps{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none;counter-reset:s}
+  .steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:14px;background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:14px 18px;min-width:0}
+  .steps li::before{content:counter(s);font-family:var(--mono);font-weight:600;color:var(--accent);background:var(--chip);
+    width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .steps p{color:var(--muted);font-size:.93rem}
+  .field{font-family:var(--mono);font-size:.84em;background:var(--chip);padding:1px 6px;border-radius:4px;overflow-wrap:anywhere}
+  table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);font-size:.93rem}
+  .tablewrap{overflow-x:auto;border-radius:10px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--chip)}
+  tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+    padding:2px 8px;border-radius:5px;white-space:nowrap}
+  .live{color:var(--ok);background:var(--ok-soft)}
+  .soon{color:var(--flag);background:var(--flag-soft)}
+  .status-head{background:var(--flag-soft);border-radius:10px;padding:16px 20px;margin-bottom:14px}
+  .status-head strong{color:var(--flag)}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+
 </head>
 <body>
-<header>
-  <div class="kicker">REEF Events, People &amp; Organizations (EPO) — Free Event Check-In</div>
-  <h1>Staff Guide — Free Event Check-In</h1>
-  <p>Checking people in at the table, from search to save — plus what changed in the Sept 2026 rebuild</p>
-  <p class="updated">Updated 2026-09-10 (Contact Info Confirmation added; corrections now go on the request record, not profile Notes)</p>
-</header>
-<main>
-
-<h2>The Usual Flow</h2>
-<p class="section-note">Covers most people who walk up to the table — whether they think they're a member, aren't sure, or say they're brand new.</p>
-<div class="flow">
-
-  <div class="flowstep">
-    <div class="num">1</div>
-    <div class="txt"><strong>Start on <code>0. Check In</code> every time</strong>
-    <p>This is the search-by-name landing page — bookmark it, it's the same starting point no matter what the person tells you at the table. Type into the search bar (name, email, or member number all work) and tap their row to open their profile.</p>
-    </div>
+<div class="wrap">
+  <div class="intro">
+    <div class="eyebrow">Staff guide &middot; event check-in</div>
+    <h1>Checking people in at REEF events</h1>
+    <p class="lede">One guide for every event. Use the first tab for any single event. Use the second tab for REEF Fest, Oct 14-18, 2026, where each person checks in once for the whole festival.</p>
+    <a class="open" href="https://airtable.com/appCK2qlT3WHdhYKd/pbdtqTIWz928sM5iM/pagJES37hf1R4shmK" target="_blank" rel="noopener">Open the check-in tool</a>
   </div>
 
-  <div class="flowstep">
-    <div class="num">2</div>
-    <div class="txt"><strong>Check <code>Contact Info Confirmation Due</code> before you ask <span class="badge b-new">new 2026-09-10</span></strong>
-    <p>If it says <strong>Confirmed</strong>, their info was verified within the last year — skip the read-back question and go straight to step 4. If it says <strong>Needs Review</strong> (including blank, which just means never confirmed), read their info back to them: "I have you as Jane, jane@email.com — still good?" Their profile (the <em>Check-In: Attendee Profile</em> page) shows name, email, phone, membership follow-up status, and total events attended. If <strong>REEF Member Record</strong> is linked, tap into it to see their full membership record — address, member since, sustainer status — it opens as a read-only page. If everything checks out, set <code>Contact Info Confirmed At Check-in</code> to today's date, then continue to step 4.</p>
-    </div>
+  <div class="tabs" role="tablist" aria-label="Guide sections">
+    <button class="tab" id="tab-any" role="tab" aria-selected="true" aria-controls="panel-any" type="button">Any event</button>
+    <button class="tab" id="tab-fest" role="tab" aria-selected="false" aria-controls="panel-fest" type="button">REEF Fest</button>
   </div>
 
-  <div class="flowstep">
-    <div class="num">3</div>
-    <div class="txt"><strong>Two edge cases where you'll want page <code>2. Search Members</code></strong>
-    <p>Their <strong>REEF Member Record</strong> field says <code>+ Add a record</code>: check page 2 for a likely match by name or email and link it there before moving on. They don't show up on page 0 at all <em>and</em> say they're already a member: peek at page 2 to confirm before you create a new profile for them.</p>
-    </div>
+  <div id="panel-any" role="tabpanel" aria-labelledby="tab-any">
+    <section>
+      <div class="rule">
+        <strong>The one rule:</strong> search first, then check in. Never create a second record for someone just to be safe, and never link someone to a member record by name alone.
+      </div>
+    </section>
+
+    <section>
+      <h2>At the check-in table</h2>
+      <p class="note">Works on an iPad, laptop or phone. Each event has its own check-in page, and everything you do there is saved to that event only.</p>
+      <ol class="steps">
+        <li><div><h3>Pick your event</h3><p>Open the tool. It starts on <span class="field">Start Here - Pick Your Event</span>. The Today tab shows today's events. Use All events for anything else. Tap your event to open its check-in page.</p></div></li>
+        <li><div><h3>Add the person in Step 1</h3><p>Click the blue Add button and type their name. Pick them from the list. Their email shows next to each name to tell people apart. They appear at the top of the list, and that is your confirmation.</p></div></li>
+        <li><div><h3>Read their info back</h3><p>"I have you as Jane, jane@email.com. Still right?" If something is wrong, tell a team member after the event. Don't change their record at the table.</p></div></li>
+        <li><div><h3>Show or read the contact notice</h3><p>Every person sees or hears this once: "REEF may use your email to send information about this activity and occasional updates about marine conservation, programs, events, and ways to get involved. You can unsubscribe at any time. REEF does not sell your personal information." If they say they do not want updates, tick <span class="field">I do not want to receive REEF news and updates beyond communications related to this activity.</span> on their row. Leave it unticked otherwise. Opting out only stops general REEF news. They still get emails about this activity.</p></div></li>
+        <li><div><h3>Ask how they heard about us</h3><p>Pick their answer in that column on their row. Add any detail under <span class="field">Anything more</span>. The count at the top of the page shows who still needs an answer.</p></div></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>If you can't find them</h2>
+      <p class="note">Try these in order. Each one ends with the person checked in.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="who">Step 2</div>
+          <h3>Search REEF Members</h3>
+          <p>Opens in a new tab. Find them, click Add this member, then come back and check them in with Step 1.</p>
+        </div>
+        <div class="card">
+          <div class="who">Step 3</div>
+          <h3>Add New Participant</h3>
+          <p>For someone brand new. Name, email and the event are enough. The contact notice and opt-out box are on the form. They are checked in automatically when you submit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What staff do not do</h2>
+      <p class="note">You never sign anyone up for membership or unsubscribe them at the table. The team exports new attendees and their opt-out answers from this base afterward and handles membership separately.</p>
+    </section>
   </div>
 
-  <div class="flowstep">
-    <div class="num">4</div>
-    <div class="txt"><strong>Scroll to "Check in to today's event"</strong>
-    <p>On their profile, find the check-ins panel, tap <code>+</code>, pick today's event from the list, and save. This is also where the two flag checkboxes live — see <em>When Something's Different</em> below.</p>
-    </div>
+  <div id="panel-fest" role="tabpanel" aria-labelledby="tab-fest" hidden>
+    <section>
+      <div class="rule">
+        <strong>The one rule for REEF Fest:</strong> every adult checks in once, on any day, at any session. That gives us the number of unique people who came, and an email for each so we can follow up. Nobody re-checks in for the next day or the next seminar. Give each person a name tag or wristband so you can tell who has already checked in.
+      </div>
+    </section>
+
+    <section>
+      <h2>Three ways people arrive</h2>
+      <p class="note">All three end the same way: one festival check-in per adult.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="who">Registered online</div>
+          <h3>Search, confirm, check in</h3>
+          <p>Registrants from reef.org are already in the system. Search their name, read back their email, check them in. Each person in a party checks in individually.</p>
+        </div>
+        <div class="card">
+          <div class="who">Member or past attendee</div>
+          <h3>Search, confirm, check in</h3>
+          <p>Use Step 2, Search REEF Members. Confirm their info out loud, then check them in.</p>
+        </div>
+        <div class="card">
+          <div class="who">Brand new</div>
+          <h3>Add, then check in</h3>
+          <p>Use Step 3, Add New Participant. Name, email and how they heard about us are enough. The contact notice and the opt-out box are on that form, so the person can read and tick it themselves.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>At the check-in table</h2>
+      <ol class="steps">
+        <li><div><h3>Search by name or email</h3><p>Type in the search bar and open their row. Never create a second record just to be safe.</p></div></li>
+        <li><div><h3>Read their info back</h3><p>"I have you as Jane, jane@email.com. Still right?" If a <span class="field">Confirm at Check-in</span> prompt shows, ask that question (for example, whether a shared email is still theirs). Don't link anyone to a member by name alone.</p></div></li>
+        <li><div><h3>Show or read the contact notice</h3><p>Every person sees or hears the notice once, as on the Any event tab. If they say they do not want updates, tick the opt-out box on their row. Leave it unticked otherwise. They are checked in as normal either way.</p></div></li>
+        <li><div><h3>Ask how they heard about REEF Fest</h3><p>Ask once, at this check-in only. Registered guests get asked too, because the registration form did not include the question.</p></div></li>
+        <li><div><h3>Check them in</h3><p>Save the check-in. They are now counted for the whole festival.</p></div></li>
+        <li><div><h3>Count minors, once per party</h3><p>If children came with them, enter how many in <span class="field">Minors (under 18) in your party</span> on one adult only. Children do not check in, and we never ask or record why someone isn't checking in.</p></div></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Counting each session</h2>
+      <p class="note">Check-in answers "who came." Head counts answer "how many at each session."</p>
+      <div class="tablewrap">
+        <table>
+          <tr><th>Session</th><th>How we count it</th></tr>
+          <tr><td>Each seminar</td><td>A team member does a head count and enters it as Actual Headcount. Attendance often varies a lot between seminars, so count every one.</td></tr>
+          <tr><td>Wednesday Sustainers dinner</td><td>The invite list.</td></tr>
+          <tr><td>Saturday Floss</td><td>The ticket list of who paid.</td></tr>
+          <tr><td>Other open sessions</td><td>Head count by a team member.</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="status-head"><strong>Check before Oct 14.</strong> This guide describes the plan. Some pieces are built and some are still being finished. Update this table after the Science Saturday dry run on Oct 10.</div>
+      <div class="tablewrap">
+        <table>
+          <tr><th>Piece</th><th>Status</th></tr>
+          <tr><td>Registrants pre-loaded and linked to REEF Fest</td><td><span class="pill live">Live</span> Registrations after order 42819 still to be added</td></tr>
+          <tr><td>Minors count field and festival totals</td><td><span class="pill live">Live</span> On-screen label still to be renamed</td></tr>
+          <tr><td>Contact notice and opt-out box on the check-in screen and Step 3</td><td><span class="pill live">Live</span> Added Oct 7</td></tr>
+          <tr><td>Confirm at Check-in prompts</td><td><span class="pill soon">Not on screen yet</span></td></tr>
+          <tr><td>Festival-level check-in and quick tap-in for returns</td><td><span class="pill soon">Not built yet</span></td></tr>
+          <tr><td>"Add Event" renamed "Check In"</td><td><span class="pill soon">Not done yet</span></td></tr>
+          <tr><td>Member database sign-up and unsubscribes</td><td><span class="pill soon">Handled later by the team</span> Staff never sign anyone up or unsubscribe them. The team exports new attendees and their opt-out answers from this base afterward.</td></tr>
+        </table>
+      </div>
+    </section>
   </div>
 
-  <div class="flowstep">
-    <div class="num">5</div>
-    <div class="txt"><strong>Back to <code>0. Check In</code> for the next person</strong>
-    <p>Use the sidebar to jump back. No form to close, nothing else to submit.</p>
-    </div>
-  </div>
-
+  <footer>REEF Events, People &amp; Organizations base &middot; questions go to Martha.</footer>
 </div>
 
-<div class="notebox">
-  <strong>How Contact Info Confirmation actually works <span class="badge b-note">new 2026-09-10</span></strong>
-  <p>Two fields on the attendee's profile do this: <code>Contact Info Confirmed At Check-in</code> is a date you set by hand when you confirm their info is accurate — there's no button, just pick today's date. <code>Contact Info Confirmation Due</code> reads that date automatically and shows <strong>Confirmed</strong> (within the last 365 days) or <strong>Needs Review</strong> (blank, or over a year old) — that's the one you actually glance at in step 2. Flagging a correction with <code>Profile Update Requested at Check-in</code> is separate and doesn't set the confirmation date — if something's wrong, fix it via that flow (below), don't also mark it confirmed. This applies to every check-in regardless of event size, not just big events — it's not the same thing as Activate for Check-In (see <em>Big Events</em> below), which is about finding members fast, not about contact info.</p>
-</div>
-
-<h2>When Something's Different</h2>
-<p class="section-note">Three situations come up regularly. None of them require leaving the tool or filling out a second form.</p>
-
-<div class="item">
-  <h3>They say their email, address, phone, or name spelling is wrong <span class="badge b-new">now automatic</span></h3>
-  <ol>
-    <li>Don't edit anything on their profile to "fix" it — the membership fields sync from REEF's real Member Database and staff edits here won't stick.</li>
-    <li>On their check-in row for today (the one you just created in step 4), check the box <code>Profile Update Requested at Check-in</code>.</li>
-    <li>That's it — checking the box automatically creates a Pending Review entry in the Profile Corrections Queue for the follow-up team, linked to this exact attendee and this exact visit. You don't need to separately open <code>4. Admin: Profile Corrections Queue</code> and create anything by hand.</li>
-    <li><strong>Write the correction on that new request, not on their profile <span class="badge b-new">changed 2026-09-10</span></strong> — a chip for it appears under <code>Member Profile Update Requests</code> on this check-in row. Tap it to expand, then set <strong>Field Changed</strong> and <strong>New Value</strong> to what the attendee told you (Old Value too if you happen to know it). Never write this in the <strong>Notes</strong> field on their profile — that field is permanent and nothing ever clears it, so a correction jotted there looks unresolved forever even after it's fixed.</li>
-    <li>Head back and finish checking them in as usual.</li>
-  </ol>
-</div>
-
-<div class="item">
-  <h3>They've never been to a REEF event</h3>
-  <ol>
-    <li>From <code>0. Check In</code>, tap <code>+</code> to add a new person.</li>
-    <li>Name and email are enough to get started — phone is a nice-to-have.</li>
-    <li>Save, then continue at step 4 of the usual flow to check them in.</li>
-  </ol>
-</div>
-
-<div class="item">
-  <h3>Two similar names, and you're not confident which is right</h3>
-  <ol>
-    <li>Pick the closest match and check them in — don't leave anyone un-checked-in over this.</li>
-    <li>On that check-in, check the box <code>Possible Duplicate - Needs Review</code>.</li>
-    <li>Don't create a second profile just to be safe — that box is exactly what surfaces it for review after the event instead.</li>
-  </ol>
-</div>
-
-<div class="notebox">
-  <strong>How the profile-update flag actually reaches someone <span class="badge b-note">what changed 2026-09-10</span></strong>
-  <p>Checking <code>Profile Update Requested at Check-in</code> triggers an automation the moment you save it: it creates a new record in Member Profile Update Requests — linked to the attendee and to that specific check-in — and sets Status to <strong>Pending Review</strong>. That record lands on <code>4. Admin: Profile Corrections Queue</code> on its own. Unchecking the box, or any other change on the check-in, doesn't create anything — only checking it does. Before this automation was fixed, checking this box didn't go anywhere; if you were ever told to manually open the Corrections Queue and log the correction yourself, that step is gone now.</p>
-  <p style="margin-top:10px;"><strong>Where the actual correction goes</strong> — <span class="badge b-new">changed 2026-09-10</span> the created request no longer defaults <code>Field Changed</code> to "Other" and staff no longer jot the correction in the attendee's profile Notes. Fill in <code>Field Changed</code> and <code>New Value</code> on the request itself (see step above) — that's now the only place a correction should be written. The attendee's own <strong>Notes</strong> field is permanent and untouched by any of this; keep it for genuinely permanent notes about the person, not a pending fix.</p>
-</div>
-
-<h2>Big Events (REEF Fest, etc.): Activating Members Fast <span class="badge b-new">new 2026-09-10</span></h2>
-<p class="section-note">For events where most people walking up are already REEF members who've simply never checked in before — three hundred people at REEF Fest, say — asking everyone for their email at the table is too slow. Use this instead.</p>
-
-<div class="item" style="border-left-color:var(--teal);">
-  <h3>The Activate for Check-In button</h3>
-  <ol>
-    <li>Go to page <code>2. Search Members</code> and find the person in REEF's real Member Database — search by name.</li>
-    <li>Open their profile and find the <strong>Activate for Check-In</strong> button.</li>
-    <li>Tap it once. If they don't already have a check-in profile, one is created instantly — pre-filled with their name and email from the Member Database and linked back to their membership record. If they already have one, nothing changes; you've just confirmed they're a member.</li>
-    <li>Open their new profile from there (or search for them again on <code>0. Check In</code>) and finish checking them in as usual — step 4 of the usual flow.</li>
-  </ol>
-</div>
-
-<div class="notebox">
-  <strong>When to use this vs. the usual flow</strong>
-  <p>For day-to-day check-ins, <code>0. Check In</code> is still the front door — most people are found there in one search, no extra steps needed. Reach for <strong>Activate for Check-In</strong> specifically at high-volume events where you already expect most attendees to be existing members: it skips typing an email for anyone who's never checked in before. A small number of very old member records have no email or name on file in the Member Database — if a newly-activated profile comes back blank, just fill in what the person tells you at the table, the same as you would for any brand-new attendee.</p>
-</div>
-
-<h2>REEF Member Record vs. the Legacy Member Number</h2>
-<p class="section-note">Two different fields on a person's profile can look like they answer "are they a member" — only one of them does.</p>
-<table>
-  <tr><th>Field</th><th>Use it?</th></tr>
-  <tr><td><strong>REEF Member Record</strong></td><td>Yes — this is the current source of truth. When it's linked, it points to a real row in REEF's actual Member Database (the same list on page 2), and that's where the address / member since / sustainer info comes from. Empty or showing <code>+ Add a record</code> means this person isn't linked yet, even if they insist they're a member.</td></tr>
-  <tr><td><strong>REEF member number (legacy — do not use, see REEF Member Record)</strong></td><td>No — left over from before this base was linked directly to the real Member Database. It still shows up in a couple of places (including a "REEF Member Number at Check-in" lookup that rides along on every check-in record for reference), but don't use it to decide membership status or to look someone up. If a number in this field disagrees with what page 2 shows, page 2 wins.</td></tr>
-</table>
-
-<h2>What's on Each Page</h2>
-<p class="section-note">The tool opens to <code>0. Check In</code> by default. Switch pages using the sidebar.</p>
-<table>
-  <tr><th>Page</th><th>What it's for</th></tr>
-  <tr><td><strong>0. Check In</strong></td><td>The search-by-name landing page. Start here every time — search, add new people, and open a profile to check someone in.</td></tr>
-  <tr><td><strong>1. Search People (EPO)</strong></td><td>A fuller admin view of the same list, with every Member Database lookup field visible at once. Handy for follow-up work; not something you need at the check-in table.</td></tr>
-  <tr><td><strong>2. Search Members</strong></td><td>The real REEF membership list, for confirming "are they actually a member" and linking a REEF Member Record. Read-only, except for the <strong>Activate for Check-In</strong> button on each profile — see <em>Big Events</em> below.</td></tr>
-  <tr><td><strong>3–5. Admin queues</strong></td><td>Membership follow-up, profile corrections, and check-ins-by-event — all after-the-event work, not something you need at the table.</td></tr>
-</table>
-
-<div class="callout">
-  <strong>The short version:</strong> search on <code>0. Check In</code>, open their profile, confirm their info out loud, add a check-in for today's event. New person or outdated info? Handle it in that same profile — you never have to start over or fill out a second form, and a flagged correction now reaches the follow-up team on its own.
-</div>
-
-<div class="footnote">
-  REEF Events, People &amp; Organizations (EPO) base, interface <em>Free Event Check-In</em>. Questions about this tool go to Martha.
-</div>
-
-</main>
+<script>
+  var tabs = { any: document.getElementById('tab-any'), fest: document.getElementById('tab-fest') };
+  var panels = { any: document.getElementById('panel-any'), fest: document.getElementById('panel-fest') };
+  function show(key, updateHash) {
+    Object.keys(tabs).forEach(function (k) {
+      var on = k === key;
+      tabs[k].setAttribute('aria-selected', on ? 'true' : 'false');
+      panels[k].hidden = !on;
+    });
+    if (updateHash) { try { history.replaceState(null, '', '#' + key); } catch (e) {} }
+  }
+  Object.keys(tabs).forEach(function (k) {
+    tabs[k].addEventListener('click', function () { show(k, true); });
+  });
+  var start = 'any';
+  try { var h = (location.hash || '').replace('#', ''); if (h === 'fest' || h === 'any') start = h; } catch (e) {}
+  show(start, false);
+</script>
 </body>
 </html>

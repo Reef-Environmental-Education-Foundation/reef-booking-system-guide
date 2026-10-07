@@ -28,7 +28,7 @@ should be made here, on `main`, not in Dropbox.
 - `06-testing-instructions.html` — Staff Testing Instructions (OXP)
 - `07-bug-reporting.html` — Bug-Reporting Process (OXP)
 - `08-first-booking.html` — First Real Booking Checklist (OXP)
-- `09-checkin-guide.html` — Free Event Check-In Staff Guide (EPO base, `pbdwEuug1FCa8B6gT`)
+- `09-checkin-guide.html` — Event Check-In Staff Guide (EPO base). Two tabs: Any event, and REEF Fest. Covers the Event Check-In interface (Start Here, Step 2, Step 3), the contact notice and opt-out step. Replaces the earlier guide for the Admin Event Check-In interface, which is kept in git history.
 
 Files are flat at the repo root (not nested in a `guides/` folder) because GitHub's web upload
 flow doesn't preserve subfolders when files are added individually.
